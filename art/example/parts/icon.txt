@@ -1,0 +1,19 @@
+# 16×16 app / tray icon: The pet's face. Scaled ×1, ×2, ×3 and ×16 for the .ico sizes.
+part icon
+....HHHHHHHH....
+..HHHHHHHHHHHH..
+.HHHhggggggghHH.
+.HHhhhhhhhhhhHH.
+HHhhhHhhhHhhhhHH
+HhhhHhhhhhHhhhpH
+HhSSShSSSShSSSpH
+HhSEESSSSSSEESPH
+HhSEWSSSSSSEWSpH
+HhSEESSSSSSEESPH
+HhrrSSSSSSSSrrpH
+HhSSSSSLLSSSSSPH
+HhhSSSSSSSSSSpPH
+.HhhSSSSSSSSppP.
+.HHhhhSSSShhPPH.
+..HHHHHHHHHHHH..
+end

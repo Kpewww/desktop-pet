@@ -1,0 +1,266 @@
+# 示例宠物 v1 — 吃喝拉撒: props, hands, faces and effects.
+
+# ------------------------------------------------------------------ smoothie (held in both hands)
+# Cup with little hands on its sides; origin = cup bottom centre, placed on body.hold.
+part v1.prop.cup origin=5,13
+.....W.....
+.....W.....
+.....W.....
+....oWo....
+...ooooo...
+..okkkkko..
+.S.mmmmm.S.
+SS.mmmmm.SS
+kSkmmMmmkSk
+.k.MmMmM.k.
+...MMMMM...
+...MMMMM...
+....MMM....
+....kkk....
+end
+
+part v1.arml.hold origin=3,0
+..11....
+.1112...
+.1112...
+1112....
+1112....
+11122...
+2111122.
+.2221112
+....22..
+end
+part v1.armr.hold from=v1.arml.hold flip
+end
+
+# Raised to sip: forearms come up towards the mouth.
+part v1.arml.sip origin=3,0
+..11....
+.1112...
+.11122..
+111112..
+2111112.
+.222112.
+....22..
+end
+part v1.armr.sip from=v1.arml.sip flip
+end
+
+# ------------------------------------------------------------------ yakiniku
+# Little charcoal grill with meat on the grate; two flicker frames.
+part v1.prop.grill1 origin=8,8
+..U..uu...U.u....
+.GGGGGGGGGGGGGGG.
+GGwGwGwGwGwGwGwGG
+GFRFFRFFRFFRFFRFG
+GGGGGGGGGGGGGGGGG
+.GkkkkkkkkkkkkkG.
+.GGGGGGGGGGGGGGG.
+..G...........G..
+..G...........G..
+end
+
+part v1.prop.grill2 from=v1.prop.grill1
+.u..U..u.U...uU..
+_
+_
+GRFFRFFRFFRFFRFFG
+end
+
+# Chopsticks with a piece of meat, held low (at the grill) or high (at the mouth).
+part v1.handf.chop_low origin=2,3
+......X...
+.....X....
+.kkkX.....
+kSSSXk....
+kSsXSk....
+.kUUk.....
+..uU......
+end
+
+part v1.handf.chop_high origin=1,5
+..uU.....
+.kUUk....
+X.XSk....
+.XSSSk...
+X.SsSk...
+.kkkk....
+end
+
+part v1.armr.reach origin=0,0
+.11.....
+2111....
+2111....
+.2111...
+..2112..
+...2112.
+....222.
+end
+
+# ------------------------------------------------------------------ toilet (behind her) and effects
+# Front view: the wide bowl rim shows either side of her hips, the pedestal round her legs.
+part v1.prop.toilet sym=16 origin=16,16
+.....oooooooooooo
+...oooooooooooooo
+..ooowwwwwwwwwwww
+.oooowwwwwwwwwwww
+.oooooowwwwwwwwww
+..ooooooooooooooo
+...oooooooooooooo
+.....wwoooooooooo
+........ooooooooo
+.........oooooooo
+.........oooooooo
+.........oooooooo
+.........oooooooo
+........ooooooooo
+.......oooooooooo
+......ooooooooooo
+......wwwwwwwwwww
+end
+
+part fx.poop origin=4,6
+....X....
+...XxX...
+...Xxx...
+..XxxxX..
+.XxxxxxX.
+.XxWxWxX.
+XxxxxxxxX
+XxxXXXxxX
+.XXXXXXX.
+end
+
+part fx.stink1 origin=4,2
+..V.V....
+.VvVvV...
+VvvvvvV..
+.VvvvV...
+..VVV....
+end
+
+part fx.stink2 origin=5,3
+...VV.VV...
+..VvvVvvV..
+.VvvvvvvvV.
+VvvvvvvvvvV
+.VvvvvvvvV.
+..VVVVVVV..
+end
+
+part fx.splash origin=4,2
+b.......b
+.b.B.B.b.
+..b...b..
+end
+
+part fx.swirl origin=4,3
+..bbbbb..
+.b.....b.
+b..bbb..b
+b.b...b..
+.b..b....
+..bb.....
+end
+
+part fx.smoke origin=2,4
+.kk..
+kwwk.
+.kwwk
+kwwk.
+.kk..
+end
+
+part fx.cold origin=3,2
+b.b.b.b
+.B.B.B.
+b.b.b.b
+end
+
+part fx.note origin=2,5
+..bbb
+..bbb
+..b.b
+..b..
+bbb..
+bbb..
+end
+
+part fx.sparkle origin=3,3
+...y...
+.y.Y.y.
+..YYY..
+yYYWYYy
+..YYY..
+.y.Y.y.
+...y...
+end
+
+# ------------------------------------------------------------------ faces for eating & the rest
+part v1.face.sip origin=1,0
+kLk
+.k.
+end
+
+part v1.face.chew1 origin=7,2
+S.............S
+..............S
+......LLL......
+end
+
+part v1.face.chew2 origin=7,2
+S.............S
+S..............
+......LLL......
+end
+
+part v1.face.strain origin=7,3
+RRr.........rRR
+RRr.........rRR
+...............
+.....LLLLL.....
+end
+
+part v1.face.relief origin=7,3
+rr...........rr
+rr...........rr
+...............
+.....LLLLL.....
+......LWL......
+end
+
+part v1.face.whistle origin=1,1
+.L.
+LEL
+end
+
+part v1.eyes.squeeze origin=7,2
+...............
+.EE.......EE...
+..EEE.....EEE..
+.EE.........EE.
+...............
+end
+
+part v1.eyes.sparkle origin=7,2
+E.............E
+.EEEE.....EEEE.
+.EWYE.....EWYE.
+.EYWE.....EYWE.
+..ee.......ee..
+end
+
+# hands on the tummy (hungry)
+part v1.arml.belly origin=3,0
+..11....
+.1112...
+.1112...
+1112....
+11122...
+211112..
+.221112.
+...2SS2.
+....ss..
+end
+part v1.armr.belly from=v1.arml.belly flip
+end

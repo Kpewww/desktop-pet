@@ -1,0 +1,191 @@
+# 示例宠物 v1 — expressions: baked eyes, mouths, ear states. All sit on head anchors.
+
+# ------------------------------------------------------------------ baked eyes (head.eyes, 15x5, origin 7,2)
+part v1.eyes.happy origin=7,2
+...............
+..EE.......EE..
+.E..E.....E..E.
+...............
+...............
+end
+
+part v1.eyes.closed origin=7,2
+...............
+...............
+.E..E.....E..E.
+..EE.......EE..
+...............
+end
+
+part v1.eyes.angry origin=7,2
+...............
+.EE.........EE.
+..EEE.....EEE..
+..eeE.....Eee..
+...............
+end
+
+part v1.eyes.wide origin=7,2
+..EE.......EE..
+.EWWE.....EWWE.
+.EWEE.....EEWE.
+.EWWE.....EWWE.
+..EE.......EE..
+end
+
+part v1.eyes.dizzy origin=7,2
+.EEEE.....EEEE.
+.E..E.....E..E.
+.E.EE.....EE.E.
+.E........E....
+.EEE.......EEE.
+end
+
+part v1.eyes.half origin=7,2
+E.............E
+...............
+.EEEE.....EEEE.
+.EeeE.....EeeE.
+..ee.......ee..
+end
+
+part v1.eyes.side origin=7,2
+E.............E
+...............
+.EEEE.....EEEE.
+.eeEE.....eeEE.
+.ee.......ee...
+end
+
+part v1.eyes.teary origin=7,2
+E.............E
+.EEEE.....EEEE.
+.EWeE.....EWeE.
+.EeeE.....EeeE.
+.BeeB.....BeeB.
+end
+
+# ------------------------------------------------------------------ mouths & cheeks (head.face)
+part v1.face.o origin=1,1
+.L.
+LEL
+.L.
+end
+
+part v1.face.frown origin=1,0
+.L.
+L.L
+end
+
+part v1.face.grin origin=2,1
+LLLLL
+LWWWL
+.LLL.
+end
+
+part v1.face.yell origin=2,1
+.LLL.
+LEEEL
+LEEEL
+.LLL.
+end
+
+part v1.face.bark origin=1,0
+LLL
+LEL
+.L.
+end
+
+part v1.face.yawn origin=1,1
+.L.
+LEL
+LEL
+LEL
+.L.
+end
+
+part v1.face.smirk origin=1,0
+..L
+LL.
+end
+
+part v1.face.chomp origin=2,0
+LLLLL
+LWLWL
+.LLL.
+end
+
+part v1.face.wavy origin=2,0
+L.L.L
+.L.L.
+end
+
+# Pout: pursed lips plus cheeks puffed past the face edge into the side locks.
+part v1.face.pout origin=8,4
+S...............S
+Srr...........rrS
+Srr...........rrS
+S...............S
+.......LLL.......
+........L........
+end
+
+# Petted: strong blush and a small content smile.
+part v1.face.blush origin=7,3
+rrr.........rrr
+rrr.........rrr
+...............
+......L.L......
+.......L.......
+end
+
+# ------------------------------------------------------------------ ears (head.ears, origin 18,0)
+part v1.ears.perk sym=18 origin=18,0
+...KKK.............
+..KfOOKK...........
+.KfOOOOOK..........
+.KfOOiiOOK.........
+..KfOiiiOOK........
+...KfOiiOOK........
+....KfOOOOK........
+.....KKKKK.........
+end
+
+part v1.ears.back sym=18 origin=18,0
+...................
+...................
+...................
+.......KKK.........
+......KfOOK........
+.....KfOOOK........
+.....KfOiK.........
+......KKK..........
+end
+
+part v1.ears.flap sym=18 origin=18,0
+...................
+...................
+...................
+...KKKKK...........
+..KfOOOOKK.........
+.KfOOiiiOOK........
+.KfOOiiiiOK........
+..KfOOOOOK.........
+...KKKKKK..........
+end
+
+part v1.ears.droop sym=18 origin=18,0
+...................
+...................
+........KKK........
+.......KfOOK.......
+......KfOOOK.......
+.....KfOOOOK.......
+.....KfOOiK........
+....KfOOiiK........
+....KfOOiiK........
+....KfOOOiK........
+....KfOOOOK........
+.....KfOOK.........
+......KKK..........
+end

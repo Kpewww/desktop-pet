@@ -1,0 +1,71 @@
+# 示例宠物 v1 — holding up the clipboard sign. The board is drawn by the app on the stick's
+# "sign" anchor (exported as prop.sign), so its size can follow the text.
+
+# ------------------------------------------------------------------ stick in her fist
+# Origin = the fist; sign = top-left pixel of the stick, the board's bottom edge sits on it.
+part v1.prop.sign_stick origin=2,27 sign=2,0
+..jJ..
+..jJ..
+..jJ..
+..jJ..
+..jJ..
+..jJ..
+..jJ..
+..jJ..
+..jJ..
+..jJ..
+..jJ..
+..jJ..
+..jJ..
+..jJ..
+..jJ..
+..jJ..
+..jJ..
+..jJ..
+..jJ..
+..jJ..
+..jJ..
+..jJ..
+..jJ..
+..jJ..
+..jJ..
+.SSSS.
+SSSSSs
+SsSsSs
+.sSSs.
+..jJ..
+..jJ..
+..jJ..
+end
+
+# ------------------------------------------------------------------ her right arm (screen right) carrying it
+# Origins are the shoulder joint; the fist on the stick covers the end of the sleeve.
+# Low, out to the side (the stick has just popped into her hand).
+part v1.armr.sign_low origin=1,1
+11.........
+1112.......
+.11112.....
+..211112...
+....211112.
+......21112
+........222
+end
+
+# Level with the shoulder, on the way up.
+part v1.armr.sign_mid origin=0,1
+1111112...
+111111112.
+2111111112
+.222222222
+end
+
+# Raised: the fist just below her ear, the stick running up past it.
+part v1.armr.sign origin=1,6
+.........112
+.......11112
+.....111112.
+...1111122..
+.1111122....
+111122......
+1122........
+end

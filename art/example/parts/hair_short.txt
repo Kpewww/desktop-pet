@@ -1,0 +1,118 @@
+# 示例宠物 v1 — the short look (a chin-length bob, after 剪头发). variants.txt swaps these in for the
+# long hair parts; the head keeps its fringe and the side locks that frame the face.
+
+# The back hair, ending just under the chin and curling in.
+part v1.hairbackS.still sym=15 origin=15,0 mirror=v1.hairbackS.still
+..........HHHHHH
+........HHHHHHHH
+......HHHHHHHHHH
+.....HHHHHHHHHHH
+....HHHHHHHHHHHH
+...HHHHHHHHHHHHH
+..HHHHHHHHHHHHHH
+..HHHHHHHHHHHHHH
+.HHhHHHHHHHHHHHH
+HHhhHHHHHHHHHHHH
+HHhhHHHHHHHHHHHH
+HhghHHHHHHHHHHHH
+HhghHHHHHHHHHHHH
+HhhhHHHHHHHHHHHH
+HhhhHHHHHHHHHHHH
+HHhhHHHHHHHHHHHH
+HHhhHHHHHHHHHHHH
+HhhhHHHHHHHHHHHH
+HhghHHHHHHHHHHHH
+HhghHHHHHHHHHHHH
+HhhhHHHHHHHHHHHH
+HHhhHHHHHHHHHHHH
+.HHhHHHHHHHHHHHH
+..HHHHHHHHHHHHHH
+....HHHHHHHHHHHH
+end
+
+# Falling: the bob flies up.
+part v1.hairbackS.fly sym=15 origin=15,0 mirror=v1.hairbackS.fly
+..........HHHHHH
+........HHHHHHHH
+......HHHHHHHHHH
+.....HHHHHHHHHHH
+....HHHHHHHHHHHH
+...HHHHHHHHHHHHH
+..HHHHHHHHHHHHHH
+.HHHHHHHHHHHHHHH
+HHhHHHHHHHHHHHHH
+HhhHHHHHHHHHHHHH
+HhgHHHHHHHHHHHHH
+HhgHHHHHHHHHHHHH
+HhhHHHHHHHHHHHHH
+HhhHHHHHHHHHHHHH
+.HhHHHHHHHHHHHHH
+..HHHH..........
+end
+
+# The ends of the side locks, just below the chin (the streak stays on HER left).
+part v1.hairfrontS.base sym=13 origin=13,0
+..HhhH........
+end
+
+part v1.hairfrontS.still from=v1.hairfrontS.base mirror=v1.hairfrontS.still
+_____________________PpPH
+end
+
+# Walking, seen from the side: the bob swings a little.
+part v1.side.hairS_a origin=5,0
+....HHHH....
+..HHHHHHHH..
+.HHHHHHHHHH.
+.HHhHHHHHHH.
+HHhhHHHHHHH.
+HhghHHHHHHH.
+HhghHHHHHHH.
+HhhhHHHHHHH.
+HhhhHHHHHH..
+HhhhHHHHHH..
+HHhhHHHHHH..
+HHhhHHHHH...
+HhhhHHHHH...
+HhghHHHHH...
+HhghHHHHH...
+HhhhHHHH....
+HhhhHHHH....
+HhhhHHHH....
+HhhhHHHH....
+HHhhHHH.....
+HHhhHHH.....
+HhhhHHH.....
+HhhhHHH.....
+.HhhHH......
+..HHH.......
+end
+
+part v1.side.hairS_b origin=5,0
+....HHHH....
+..HHHHHHHH..
+.HHHHHHHHHH.
+.HHhHHHHHHH.
+HHhhHHHHHHH.
+HhghHHHHHHH.
+HhghHHHHHHH.
+HhhhHHHHHHH.
+HhhhHHHHHH..
+HhhhHHHHHH..
+HHhhHHHHHH..
+HHhhHHHHH...
+HhhhHHHHH...
+HhghHHHHH...
+HhghHHHHH...
+HhhhHHHH....
+HhhhHHHH....
+HhhhHHHH....
+HhhhHHHH....
+HHhhHHH.....
+HHhhHHH.....
+HhhhHHH.....
+.HhhhHHH....
+.HhhhHH.....
+..HhhHH.....
+...HHH......
+end

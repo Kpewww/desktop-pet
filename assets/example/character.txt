@@ -1,0 +1,51 @@
+# 示例宠物「小柴」的角色档（编译时嵌进 exe）。格式：键 = 值；[food 名字] 开始一样吃的。
+# 做自己的宠物：.\build.ps1 new 你的名字  会复制一份，然后改这里。说明见 docs/MAKE_YOUR_PET.md。
+# id 决定数据文件夹、开机自启项和剪贴板加密，发给别人以后不要再改。
+key      = example
+id       = XiaoChai
+name     = 小柴
+nick     = 小柴
+pronoun  = 她
+ears     = 柴犬耳朵和尾巴
+hotkey   = Ctrl+Alt+V
+# 默认造型（art/example/variants.txt 里的第一个）
+look     = short
+selffood = smoothie
+# 另一只宠物的 id（两只都开着会互相打招呼、串门）；不填就是一只
+partner  =
+# 两只都在时，数字大的负责举牌、健康提醒和专注监督
+duty     = 1
+# wardrobe：衣柜和发型；calm：防干扰模式
+features = wardrobe calm
+
+# cues：第几帧说哪个场景的台词；self：自己去拿时用的；amount：能吃多饱；gassy：吃完更容易放屁
+[food smoothie]
+label    = 珍珠奶茶
+clip     = eat_smoothie
+cues     = 1:smoothie 6:freeze
+self     = 6:freeze
+selfline = self_smoothie
+amount   = 25
+mood     = 8
+
+[food yakiniku]
+label    = 烤肉
+clip     = eat_yakiniku
+cues     = 1:yakiniku 12:yummy
+amount   = 50
+mood     = 15
+gassy    = yes
+
+[food pomegranate]
+label    = 石榴
+clip     = eat_pomegranate
+cues     = 1:pomegranate 9:yummy
+amount   = 20
+mood     = 12
+
+[food chicken]
+label    = 鸡肉棒
+clip     = eat_chicken
+cues     = 1:chicken 8:yummy
+amount   = 35
+mood     = 14

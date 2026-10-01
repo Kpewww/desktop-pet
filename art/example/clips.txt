@@ -1,0 +1,538 @@
+# 小柴 animation clips - syntax in art/README.md.
+canvas 80 80
+origin 40 77
+outline K
+layers propback tail hairback armsback legs body arml armr hairfront head ears prop | face eyes handf fx
+
+# ------------------------------------------------------------------ base poses
+pose stand legs=v1.legs.front body=v1.body.front@legs.hip arml=v1.arml.down@body.shl armr=v1.armr.down@body.shr head=v1.head.front@body.neck hairfront=v1.hairfront.still@head.locks hairback=v1.hairback.still@head.hair ears=v1.ears.down@head.ears tail=v1.tail.idle@body.tail face=v1.face.neutral@head.face eyes=v1.eyes.gaze@head.eyes
+
+pose sitting body=v1.body.sit head=v1.head.front@body.neck hairfront=v1.hairfront.still@head.locks hairback=v1.hairback.still@head.hair ears=v1.ears.down@head.ears tail=v1.tail.idle@body.tail face=v1.face.neutral@head.face eyes=v1.eyes.gaze@head.eyes
+
+# ------------------------------------------------------------------ everyday
+# Breathing with follow-through: the floppy ears lag one frame behind the head.
+clip idle loop
+  f 320 +stand
+  f 100 ~ head=@body.neck:0,1 ears=@head.ears:0,-1
+  f 100 ~ body=@legs.hip:0,1 head=@body.neck ears=@head.ears:0,-1 tail=v1.tail.wag1@body.tail
+  f 320 ~ ears=@head.ears
+  f 100 ~ body=@legs.hip head=@body.neck:0,1 ears=@head.ears
+  f 100 ~ head=@body.neck ears=@head.ears:0,1 tail=v1.tail.idle@body.tail
+
+# Side-view walk: 110 ms per frame, the planted foot slides back 2 px per frame
+# => walk speed 2 / 0.11 = 18 px/s (Config.WalkSpeed). Arm swings opposite the legs.
+pose side legs=v1.side.legs1 body=v1.side.body@legs.hip arml=v1.side.arm_back@body.arm head=v1.side.head@body.neck hairback=v1.side.hair_a@head.hair ears=v1.side.ear@head.ear tail=v1.side.tail@body.tail
+
+clip walk_r loop
+  f 110 +side
+  f 110 ~ legs=v1.side.legs2 body=@legs.hip:0,1
+  f 110 ~ legs=v1.side.legs3 body=@legs.hip arml=v1.side.arm_mid@body.arm hairback=v1.side.hair_b@head.hair ears=@head.ear:0,1
+  f 110 ~ legs=v1.side.legs4 arml=v1.side.arm_fwd@body.arm ears=@head.ear
+  f 110 ~ legs=v1.side.legs1 tail=v1.side.tail2@body.tail
+  f 110 ~ legs=v1.side.legs2 body=@legs.hip:0,1
+  f 110 ~ legs=v1.side.legs3 body=@legs.hip arml=v1.side.arm_mid@body.arm hairback=v1.side.hair_a@head.hair ears=@head.ear:0,1
+  f 110 ~ legs=v1.side.legs4 arml=v1.side.arm_back@body.arm ears=@head.ear tail=v1.side.tail@body.tail
+clip walk_l mirror=walk_r
+
+# Running away (sulking): the walk cycle at 70 ms per frame => 2 / 0.07 = 28.6 px/s (Config.RunSpeed).
+clip run_r loop
+  f 70 +side
+  f 70 ~ legs=v1.side.legs2 body=@legs.hip:0,1
+  f 70 ~ legs=v1.side.legs3 body=@legs.hip arml=v1.side.arm_mid@body.arm hairback=v1.side.hair_b@head.hair ears=@head.ear:0,1
+  f 70 ~ legs=v1.side.legs4 arml=v1.side.arm_fwd@body.arm ears=@head.ear
+  f 70 ~ legs=v1.side.legs1 tail=v1.side.tail2@body.tail
+  f 70 ~ legs=v1.side.legs2 body=@legs.hip:0,1
+  f 70 ~ legs=v1.side.legs3 body=@legs.hip arml=v1.side.arm_mid@body.arm hairback=v1.side.hair_a@head.hair ears=@head.ear:0,1
+  f 70 ~ legs=v1.side.legs4 arml=v1.side.arm_back@body.arm ears=@head.ear tail=v1.side.tail@body.tail
+clip run_l mirror=run_r
+
+# Stopping: feet come together, the hair swings forward and settles.
+clip walk_stop_r
+  f 90 +side legs=v1.side.legs0 arml=v1.side.arm_mid@body.arm hairback=v1.side.hair_b@head.hair:1,0 ears=@head.ear:1,0
+  f 110 ~ body=@legs.hip:0,1 hairback=v1.side.hair_a@head.hair:1,0
+  f 140 ~ body=@legs.hip hairback=v1.side.hair_a@head.hair ears=@head.ear
+clip walk_stop_l mirror=walk_stop_r
+
+clip wave
+  f 120 +stand face=v1.face.smile@head.face armr=v1.armr.wave1@body.shr ears=v1.ears.flap@head.ears
+  f 160 ~ armr=v1.armr.wave2@body.shr
+  f 160 ~ armr=v1.armr.wave1@body.shr
+  f 160 ~ armr=v1.armr.wave2@body.shr
+  f 160 ~ armr=v1.armr.wave1@body.shr
+  f 160 ~ armr=v1.armr.down@body.shr ears=v1.ears.down@head.ears
+
+clip sassy_glance
+  f 150 +stand eyes=v1.eyes.half@head.eyes
+  f 600 ~ eyes=v1.eyes.side@head.eyes face=v1.face.smirk@head.face
+  f 150 ~ head=@body.neck:-1,0
+  f 500 ~
+  f 150 ~ head=@body.neck eyes=v1.eyes.half@head.eyes face=v1.face.neutral@head.face
+  f 150 ~ eyes=v1.eyes.gaze@head.eyes
+
+clip yawn
+  f 200 +stand eyes=v1.eyes.half@head.eyes
+  f 150 ~ eyes=v1.eyes.closed@head.eyes face=v1.face.o@head.face head=@body.neck:0,-1
+  f 250 ~ face=v1.face.yawn@head.face arml=v1.arml.face@body.shl handf=v1.handf.mouth@head.face:0,1 ears=v1.ears.flap@head.ears
+  f 350 ~
+  f 150 ~ handf=- arml=v1.arml.down@body.shl face=v1.face.o@head.face head=@body.neck ears=v1.ears.down@head.ears
+  f 150 ~ face=v1.face.neutral@head.face eyes=v1.eyes.teary@head.eyes
+  f 250 ~
+  f 150 ~ eyes=v1.eyes.gaze@head.eyes
+
+clip stretch
+  f 150 +stand eyes=v1.eyes.closed@head.eyes
+  f 150 ~ arml=v1.arml.up@body.shl armr=v1.armr.up@body.shr
+  f 200 ~ arml=v1.arml.stretch@body.shl armr=v1.armr.stretch@body.shr body=@legs.hip:0,-1 face=v1.face.o@head.face ears=v1.ears.perk@head.ears
+  f 400 ~ legs=@0,-1
+  f 150 ~ legs=@0,0 body=@legs.hip
+  f 150 ~ arml=v1.arml.up@body.shl armr=v1.armr.up@body.shr face=v1.face.smile@head.face ears=v1.ears.flap@head.ears
+  f 150 ~ arml=v1.arml.down@body.shl armr=v1.armr.down@body.shr
+  f 250 ~ eyes=v1.eyes.happy@head.eyes ears=v1.ears.down@head.ears
+
+# ------------------------------------------------------------------ sitting & sleeping
+clip sit_down
+  f 80 +stand body=@legs.hip:0,2 legs=v1.legs.wide
+  f 90 ~ body=@legs.hip:0,5 arml=v1.arml.fist@body.shl armr=v1.armr.fist@body.shr
+  f 90 +sitting head=@body.neck:0,-1
+  f 120 +sitting
+
+clip sit loop
+  f 400 +sitting
+  f 120 ~ head=@body.neck:0,1 ears=@head.ears:0,-1
+  f 400 ~ ears=@head.ears
+  f 120 ~ head=@body.neck ears=@head.ears:0,1
+
+clip stand_up
+  f 90 +sitting head=@body.neck:0,-1
+  f 90 +stand body=@legs.hip:0,5 legs=v1.legs.wide arml=v1.arml.fist@body.shl armr=v1.armr.fist@body.shr
+  f 90 ~ body=@legs.hip:0,2
+  f 120 +stand
+
+clip sleep_down
+  f 200 +sitting eyes=v1.eyes.half@head.eyes ears=v1.ears.droop@head.ears
+  f 140 ~ head=@body.neck:0,1
+  f 140 ~ head=@body.neck:0,2 eyes=v1.eyes.closed@head.eyes
+  f 300 ~ head=@body.neck:0,3
+  f 200 ~ fx=fx.z1@head.ears:9,0
+
+# Slow sleepy breathing: long frames also mean fewer wake-ups while she naps.
+clip sleep loop
+  f 800 +sitting head=@body.neck:0,3 eyes=v1.eyes.closed@head.eyes ears=v1.ears.droop@head.ears fx=fx.z1@head.ears:9,0
+  f 800 ~ head=@body.neck:0,4 fx=fx.z2@head.ears:11,-4
+  f 800 ~ fx=fx.z3@head.ears:13,-9
+  f 800 ~ head=@body.neck:0,3 fx=-
+  f 700 ~ fx=fx.z1@head.ears:9,0
+  f 700 ~ fx=fx.z2@head.ears:11,-4
+
+clip wake
+  f 150 +sitting head=@body.neck:0,3 eyes=v1.eyes.closed@head.eyes ears=v1.ears.droop@head.ears
+  f 150 ~ head=@body.neck:0,2 eyes=v1.eyes.half@head.eyes
+  f 200 ~ head=@body.neck handf=v1.handf.rub@head.eyes:-4,0 face=v1.face.frown@head.face
+  f 200 ~ handf=v1.handf.rub@head.eyes:-4,1
+  f 200 ~ handf=v1.handf.rub@head.eyes:-4,0
+  f 250 ~ handf=- eyes=v1.eyes.half@head.eyes ears=v1.ears.down@head.ears face=v1.face.neutral@head.face
+
+# ------------------------------------------------------------------ 陪看: sitting at her side, watching a video with you
+# The engine points her runtime eyes up at the screen. Slow breathing, an ear twitch, a wag:
+# long frames, so a whole film costs hardly any wake-ups.
+clip watch loop
+  f 2400 +sitting
+  f 140 ~ ears=v1.ears.flap@head.ears
+  f 180 ~ ears=v1.ears.down@head.ears
+  f 2600 ~ head=@body.neck:0,1
+  f 160 ~ tail=v1.tail.wag1@body.tail
+  f 160 ~ tail=v1.tail.idle@body.tail
+  f 1800 ~ head=@body.neck
+
+# Something funny: eyes shut tight, a grin, shoulders bobbing, little sparkles.
+clip watch_laugh
+  f 90 +sitting eyes=v1.eyes.happy@head.eyes face=v1.face.grin@head.face ears=v1.ears.flap@head.ears
+  f 120 ~ head=@body.neck:0,1 fx=fx.sparkle@head.ears:11,-2
+  f 120 ~ head=@body.neck fx=-
+  f 120 ~ head=@body.neck:0,1 fx=fx.sparkle@head.ears:-11,-3
+  f 120 ~ head=@body.neck fx=-
+  f 120 ~ head=@body.neck:0,1 tail=v1.tail.wag1@body.tail
+  f 220 ~ head=@body.neck ears=v1.ears.down@head.ears tail=v1.tail.idle@body.tail
+  f 160 ~ eyes=v1.eyes.gaze@head.eyes face=v1.face.smile@head.face
+
+# Something amazing: sits up, eyes wide, ears up, "!".
+clip watch_wow
+  f 80 +sitting head=@body.neck:0,-1 eyes=v1.eyes.wide@head.eyes face=v1.face.o@head.face ears=v1.ears.perk@head.ears
+  f 700 ~ fx=fx.exclaim@head.ears:0,-7
+  f 200 ~ fx=- head=@body.neck
+  f 160 ~ eyes=v1.eyes.gaze@head.eyes face=v1.face.neutral@head.face ears=v1.ears.down@head.ears
+
+# ------------------------------------------------------------------ reactions
+clip poked
+  f 60 +stand eyes=v1.eyes.wide@head.eyes face=v1.face.o@head.face ears=v1.ears.perk@head.ears
+  f 140 ~ legs=v1.legs.tuck@0,-3 arml=v1.arml.up@body.shl armr=v1.armr.up@body.shr fx=fx.exclaim@head.ears:0,-7
+  f 120 ~ legs=v1.legs.front@0,0 arml=v1.arml.down@body.shl armr=v1.armr.down@body.shr fx=-
+  f 240 ~ ears=v1.ears.down@head.ears
+
+clip annoyed loop
+  f 300 +stand eyes=v1.eyes.half@head.eyes face=v1.face.frown@head.face ears=v1.ears.back@head.ears tail=v1.tail.down@body.tail
+  f 120 ~ head=@body.neck:0,1
+  f 300 ~ head=@body.neck
+  f 300 ~ eyes=v1.eyes.side@head.eyes
+  f 120 ~ head=@body.neck:0,1
+  f 300 ~ head=@body.neck eyes=v1.eyes.half@head.eyes
+
+# Pout, fists and stomping, with the anger mark pulsing.
+clip angry loop
+  f 120 +stand eyes=v1.eyes.angry@head.eyes face=v1.face.pout@head.face ears=v1.ears.back@head.ears arml=v1.arml.fist@body.shl armr=v1.armr.fist@body.shr tail=v1.tail.down@body.tail fx=fx.anger1@head.ears:10,1
+  f 120 ~ legs=v1.legs.stomp1 fx=fx.anger2@head.ears:10,1
+  f 120 ~ legs=v1.legs.front body=@legs.hip:0,1 fx=fx.anger1@head.ears:10,1
+  f 120 ~ body=@legs.hip fx=fx.anger2@head.ears:10,1
+  f 120 ~ legs=v1.legs.stomp2 fx=fx.anger1@head.ears:10,1
+  f 120 ~ legs=v1.legs.front body=@legs.hip:0,1 fx=fx.anger2@head.ears:10,1
+  f 120 ~ body=@legs.hip fx=fx.anger1@head.ears:10,1
+  f 120 ~ fx=fx.anger2@head.ears:10,1
+
+# The blow-up: jumps with arms up, yells, steams.
+clip explode
+  f 80 +stand eyes=v1.eyes.angry@head.eyes face=v1.face.yell@head.face ears=v1.ears.perk@head.ears arml=v1.arml.fist@body.shl armr=v1.armr.fist@body.shr body=@legs.hip:0,2 fx=fx.anger1@head.ears:10,1
+  f 90 ~ legs=v1.legs.tuck@0,-5 body=@legs.hip arml=v1.arml.up@body.shl armr=v1.armr.up@body.shr fx=fx.steam1@head.ears:-10,-3
+  f 90 ~ legs=v1.legs.tuck@0,-7 fx=fx.steam2@head.ears:-10,-6
+  f 90 ~ legs=v1.legs.tuck@0,-5 fx=fx.steam1@head.ears:10,-4
+  f 70 ~ legs=v1.legs.wide@0,0 body=@legs.hip:0,2 arml=v1.arml.fist@body.shl armr=v1.armr.fist@body.shr fx=fx.anger1@head.ears:10,1
+  f 90 ~ body=@legs.hip fx=fx.anger2@head.ears:10,1
+  f 90 ~ legs=v1.legs.stomp1 fx=fx.steam2@head.ears:10,-5
+  f 90 ~ legs=v1.legs.front fx=fx.anger1@head.ears:10,1
+  f 90 ~ legs=v1.legs.stomp2 fx=fx.steam1@head.ears:-10,-4
+  f 200 ~ legs=v1.legs.front fx=fx.anger1@head.ears:10,1
+
+# Turned away with arms crossed: "哼".
+clip sulk loop
+  f 300 +stand arml=v1.arms.cross@body.shl armr=- eyes=v1.eyes.closed@head.eyes face=v1.face.pout@head.face ears=v1.ears.back@head.ears head=@body.neck:-1,0 tail=v1.tail.down@body.tail fx=fx.anger2@head.ears:10,2
+  f 400 ~ fx=-
+  f 300 ~ head=@body.neck:-1,1
+  f 400 ~ head=@body.neck:-1,0 eyes=v1.eyes.side@head.eyes
+  f 300 ~ eyes=v1.eyes.closed@head.eyes fx=fx.anger2@head.ears:10,2
+  f 400 ~ fx=-
+
+clip petted loop
+  f 160 +stand eyes=v1.eyes.happy@head.eyes face=v1.face.blush@head.face ears=v1.ears.flap@head.ears tail=v1.tail.wag1@body.tail
+  f 120 ~ tail=v1.tail.wag2@body.tail head=@body.neck:0,1
+  f 160 ~ tail=v1.tail.wag1@body.tail head=@body.neck ears=v1.ears.down@head.ears
+  f 120 ~ tail=v1.tail.idle@body.tail fx=fx.heart_small@head.ears:9,-2
+  f 160 ~ tail=v1.tail.wag1@body.tail ears=v1.ears.flap@head.ears fx=fx.heart_small@head.ears:10,-5
+  f 120 ~ tail=v1.tail.wag2@body.tail fx=-
+
+clip happy
+  f 80 +stand eyes=v1.eyes.happy@head.eyes face=v1.face.grin@head.face ears=v1.ears.flap@head.ears body=@legs.hip:0,1 tail=v1.tail.wag1@body.tail
+  f 100 ~ legs=v1.legs.tuck@0,-4 body=@legs.hip arml=v1.arml.up@body.shl armr=v1.armr.up@body.shr ears=v1.ears.perk@head.ears tail=v1.tail.wag2@body.tail fx=fx.heart@head.ears:-11,-2
+  f 100 ~ legs=v1.legs.tuck@0,-6 fx=fx.heart@head.ears:-11,-5
+  f 80 ~ legs=v1.legs.tuck@0,-4 tail=v1.tail.wag1@body.tail fx=fx.heart@head.ears:-11,-7
+  f 70 ~ legs=v1.legs.wide@0,0 body=@legs.hip:0,1 arml=v1.arml.down@body.shl armr=v1.armr.down@body.shr ears=v1.ears.flap@head.ears fx=fx.heart_small@head.ears:11,-3
+  f 100 ~ legs=v1.legs.front body=@legs.hip tail=v1.tail.wag2@body.tail fx=fx.heart_small@head.ears:11,-6
+  f 120 ~ tail=v1.tail.wag1@body.tail fx=-
+  f 200 ~ ears=v1.ears.down@head.ears tail=v1.tail.idle@body.tail
+
+clip bark
+  f 70 +stand ears=v1.ears.perk@head.ears eyes=v1.eyes.happy@head.eyes face=v1.face.bark@head.face body=@legs.hip:0,1
+  f 110 ~ body=@legs.hip legs=v1.legs.tuck@0,-2 tail=v1.tail.wag1@body.tail
+  f 90 ~ legs=v1.legs.front@0,0 tail=v1.tail.wag2@body.tail
+  f 160 ~ face=v1.face.smile@head.face ears=v1.ears.down@head.ears tail=v1.tail.idle@body.tail eyes=v1.eyes.gaze@head.eyes
+
+# ------------------------------------------------------------------ dragging & physics
+clip grabbed
+  f 60 +stand legs=v1.legs.dangle1 arml=v1.arml.up@body.shl armr=v1.armr.up@body.shr eyes=v1.eyes.wide@head.eyes face=v1.face.o@head.face ears=v1.ears.perk@head.ears
+  f 120 ~ ears=v1.ears.flap@head.ears fx=fx.exclaim@head.ears:0,-7
+
+clip drag loop
+  f 110 +stand legs=v1.legs.dangle1 arml=v1.arml.up@body.shl armr=v1.armr.out@body.shr eyes=v1.eyes.angry@head.eyes face=v1.face.frown@head.face ears=v1.ears.back@head.ears fx=fx.sweat@head.ears:11,4
+  f 110 ~ legs=v1.legs.dangle2 arml=v1.arml.out@body.shl armr=v1.armr.up@body.shr hairback=@head.hair:1,0
+  f 110 ~ legs=v1.legs.dangle1 arml=v1.arml.up@body.shl armr=v1.armr.out@body.shr hairback=@head.hair fx=fx.sweat@head.ears:11,6
+  f 110 ~ legs=v1.legs.dangle3 arml=v1.arml.out@body.shl armr=v1.armr.up@body.shr hairback=@head.hair:-1,0
+  f 110 ~ legs=v1.legs.dangle1 arml=v1.arml.up@body.shl armr=v1.armr.out@body.shr hairback=@head.hair fx=fx.sweat@head.ears:11,4
+  f 110 ~ legs=v1.legs.dangle2 arml=v1.arml.out@body.shl armr=v1.armr.up@body.shr
+
+clip struggle_hard loop
+  f 80 +stand legs=v1.legs.dangle2 arml=v1.arml.up@body.shl armr=v1.armr.out@body.shr eyes=v1.eyes.angry@head.eyes face=v1.face.yell@head.face ears=v1.ears.back@head.ears fx=fx.anger1@head.ears:10,1
+  f 80 ~ legs=v1.legs.dangle3 arml=v1.arml.out@body.shl armr=v1.armr.up@body.shr hairback=@head.hair:1,0 fx=fx.sweat@head.ears:-11,4
+  f 80 ~ legs=v1.legs.dangle2 arml=v1.arml.up@body.shl armr=v1.armr.out@body.shr hairback=@head.hair:-1,0 fx=fx.anger2@head.ears:10,1
+  f 80 ~ legs=v1.legs.dangle3 arml=v1.arml.out@body.shl armr=v1.armr.up@body.shr hairback=@head.hair fx=fx.sweat@head.ears:-11,6
+
+clip bite
+  f 80 +stand legs=v1.legs.dangle1 arml=v1.arml.up@body.shl armr=v1.armr.out@body.shr eyes=v1.eyes.angry@head.eyes face=v1.face.bark@head.face ears=v1.ears.back@head.ears
+  f 70 ~ head=@body.neck:0,-2 face=v1.face.chomp@head.face
+  f 70 ~ head=@body.neck:0,-1 fx=fx.anger1@head.ears:10,0
+  f 90 ~ face=v1.face.chomp@head.face head=@body.neck:0,-2
+  f 160 ~ head=@body.neck face=v1.face.frown@head.face fx=-
+
+clip fall loop
+  f 90 +stand legs=v1.legs.tuck arml=v1.arml.up@body.shl armr=v1.armr.up@body.shr hairback=v1.hairback.fly@head.hair eyes=v1.eyes.wide@head.eyes face=v1.face.o@head.face ears=v1.ears.perk@head.ears
+  f 90 ~ ears=v1.ears.flap@head.ears
+  f 90 ~ ears=v1.ears.perk@head.ears hairback=@head.hair:0,-1
+
+clip land
+  f 60 +stand legs=v1.legs.wide body=@legs.hip:0,2 head=@body.neck:0,1 eyes=v1.eyes.closed@head.eyes face=v1.face.frown@head.face ears=v1.ears.flap@head.ears
+  f 80 ~ body=@legs.hip:0,1 head=@body.neck ears=v1.ears.down@head.ears:0,1
+  f 90 ~ legs=v1.legs.front body=@legs.hip ears=@head.ears eyes=v1.eyes.gaze@head.eyes face=v1.face.neutral@head.face
+  f 120 ~
+
+clip dizzy loop
+  f 140 +stand eyes=v1.eyes.dizzy@head.eyes face=v1.face.wavy@head.face ears=v1.ears.droop@head.ears head=@body.neck:-1,0 fx=fx.star@head.ears:-11,0
+  f 140 ~ head=@body.neck fx=fx.star@head.ears:0,-5
+  f 140 ~ head=@body.neck:1,0 fx=fx.star@head.ears:11,0
+  f 140 ~ head=@body.neck fx=fx.star@head.ears:0,4
+
+# ------------------------------------------------------------------ 吃喝拉撒
+clip hungry loop
+  f 320 +stand arml=v1.arml.belly@body.shl armr=v1.armr.belly@body.shr eyes=v1.eyes.teary@head.eyes face=v1.face.frown@head.face ears=v1.ears.droop@head.ears tail=v1.tail.down@body.tail
+  f 140 ~ body=@legs.hip:0,1 ears=@head.ears:0,-1
+  f 320 ~ ears=@head.ears eyes=v1.eyes.half@head.eyes
+  f 140 ~ body=@legs.hip ears=@head.ears:0,1
+
+# The cup pops out, she sips, gets a brain freeze, then beams. (engine cues: 1 start, 6 "好冰！")
+clip eat_smoothie
+  f 90 +stand fx=fx.sparkle@body.hold:0,-2
+  f 120 ~ fx=- prop=v1.prop.cup@body.hold:0,4 arml=v1.arml.hold@body.shl armr=v1.armr.hold@body.shr eyes=v1.eyes.sparkle@head.eyes face=v1.face.smile@head.face ears=v1.ears.flap@head.ears
+  f 250 ~
+  f 150 ~ prop=@body.hold:0,-2 arml=v1.arml.sip@body.shl armr=v1.armr.sip@body.shr eyes=v1.eyes.happy@head.eyes face=v1.face.sip@head.face ears=v1.ears.down@head.ears
+  f 350 ~
+  f 250 ~ tail=v1.tail.wag1@body.tail
+  f 90 ~ eyes=v1.eyes.squeeze@head.eyes face=v1.face.wavy@head.face head=@body.neck:-1,0 ears=v1.ears.perk@head.ears fx=fx.cold@head.ears:0,-4 tail=v1.tail.idle@body.tail
+  f 90 ~ head=@body.neck:1,0
+  f 90 ~ head=@body.neck:-1,0
+  f 90 ~ head=@body.neck:1,0
+  f 250 ~ head=@body.neck prop=@body.hold:0,4 arml=v1.arml.hold@body.shl armr=v1.armr.hold@body.shr eyes=v1.eyes.happy@head.eyes face=v1.face.grin@head.face ears=v1.ears.flap@head.ears fx=-
+  f 120 ~ prop=- arml=v1.arml.down@body.shl armr=v1.armr.down@body.shr fx=fx.sparkle@body.hold:0,-2
+  f 150 ~ fx=- face=v1.face.smile@head.face eyes=v1.eyes.gaze@head.eyes ears=v1.ears.down@head.ears
+
+# A little grill appears; two bites with chewing; smoke keeps rising. (cues: 1 start, 12 "好吃！")
+clip eat_yakiniku
+  f 90 +stand fx=fx.sparkle@0,-8
+  f 150 ~ fx=- prop=v1.prop.grill1@0,0 eyes=v1.eyes.sparkle@head.eyes face=v1.face.o@head.face ears=v1.ears.perk@head.ears
+  f 150 ~ prop=v1.prop.grill2@0,0 fx=fx.smoke@-4,-13
+  f 150 ~ prop=v1.prop.grill1@0,0 fx=fx.smoke@-3,-17 armr=v1.armr.reach@body.shr handf=v1.handf.chop_low@6,-10 face=v1.face.smile@head.face ears=v1.ears.flap@head.ears
+  f 150 ~ prop=v1.prop.grill2@0,0 fx=fx.smoke@-4,-21
+  f 180 ~ armr=v1.armr.down@body.shr handf=v1.handf.chop_high@head.face:3,1 face=v1.face.o@head.face eyes=v1.eyes.happy@head.eyes fx=fx.smoke@-4,-13
+  f 150 ~ handf=- face=v1.face.chew1@head.face prop=v1.prop.grill1@0,0
+  f 150 ~ face=v1.face.chew2@head.face prop=v1.prop.grill2@0,0 fx=fx.smoke@-3,-17
+  f 150 ~ face=v1.face.chew1@head.face prop=v1.prop.grill1@0,0 armr=v1.armr.reach@body.shr handf=v1.handf.chop_low@6,-10 fx=fx.smoke@-4,-21
+  f 180 ~ armr=v1.armr.down@body.shr handf=v1.handf.chop_high@head.face:3,1 face=v1.face.o@head.face prop=v1.prop.grill2@0,0 fx=fx.smoke@-4,-13
+  f 150 ~ handf=- face=v1.face.chew2@head.face prop=v1.prop.grill1@0,0
+  f 150 ~ face=v1.face.chew1@head.face prop=v1.prop.grill2@0,0 fx=fx.smoke@-3,-17
+  f 320 ~ face=v1.face.grin@head.face eyes=v1.eyes.happy@head.eyes fx=fx.heart@head.ears:-11,-3 tail=v1.tail.wag1@body.tail
+  f 120 ~ prop=- fx=fx.sparkle@0,-8 tail=v1.tail.idle@body.tail
+  f 150 ~ fx=- face=v1.face.smile@head.face eyes=v1.eyes.gaze@head.eyes ears=v1.ears.down@head.ears
+
+# A pomegranate pops out; she splits it (pop!), nibbles the seeds, wags. (cues: 1 start, 9 "好吃！")
+clip eat_pomegranate
+  f 90 +stand fx=fx.sparkle@body.hold:0,-2
+  f 150 ~ fx=- prop=v1.prop.pomegranate@body.hold:0,0 arml=v1.arml.hold@body.shl armr=v1.armr.hold@body.shr eyes=v1.eyes.sparkle@head.eyes face=v1.face.o@head.face ears=v1.ears.perk@head.ears
+  f 250 ~ ears=v1.ears.down@head.ears
+  f 120 ~ prop=v1.prop.pome_open@body.hold:0,0 fx=fx.star@body.hold:0,-9 eyes=v1.eyes.wide@head.eyes
+  f 200 ~ fx=- eyes=v1.eyes.happy@head.eyes face=v1.face.smile@head.face
+  f 150 ~ prop=@body.hold:0,-6 arml=v1.arml.sip@body.shl armr=v1.armr.sip@body.shr face=v1.face.chew1@head.face eyes=v1.eyes.closed@head.eyes
+  f 150 ~ face=v1.face.chew2@head.face
+  f 150 ~ face=v1.face.chew1@head.face
+  f 150 ~ face=v1.face.chew2@head.face tail=v1.tail.wag1@body.tail
+  f 300 ~ prop=@body.hold:0,0 arml=v1.arml.hold@body.shl armr=v1.armr.hold@body.shr eyes=v1.eyes.happy@head.eyes face=v1.face.grin@head.face ears=v1.ears.flap@head.ears fx=fx.heart_small@head.ears:-12,-3 tail=v1.tail.wag2@body.tail
+  f 200 ~ fx=- tail=v1.tail.idle@body.tail
+  f 120 ~ prop=- arml=v1.arml.down@body.shl armr=v1.armr.down@body.shr fx=fx.sparkle@body.hold:0,-2
+  f 150 ~ fx=- face=v1.face.smile@head.face eyes=v1.eyes.gaze@head.eyes ears=v1.ears.down@head.ears
+
+# A chicken stick held in both paws, three big bites, a very happy wag. (cues: 1 start, 8 "好吃！")
+clip eat_chicken
+  f 90 +stand fx=fx.sparkle@body.hold:0,-2
+  f 150 ~ fx=- prop=v1.prop.chicken@body.hold:0,4 arml=v1.arml.hold@body.shl armr=v1.armr.hold@body.shr eyes=v1.eyes.sparkle@head.eyes face=v1.face.o@head.face ears=v1.ears.perk@head.ears tail=v1.tail.wag1@body.tail
+  f 150 ~ tail=v1.tail.wag2@body.tail
+  f 150 ~ prop=@body.hold:0,-2 arml=v1.arml.sip@body.shl armr=v1.armr.sip@body.shr face=v1.face.chomp@head.face eyes=v1.eyes.closed@head.eyes tail=v1.tail.wag1@body.tail
+  f 150 ~ prop=v1.prop.chicken2@body.hold:0,4 arml=v1.arml.hold@body.shl armr=v1.armr.hold@body.shr face=v1.face.chew1@head.face eyes=v1.eyes.happy@head.eyes
+  f 150 ~ face=v1.face.chew2@head.face
+  f 150 ~ prop=@body.hold:0,-2 arml=v1.arml.sip@body.shl armr=v1.armr.sip@body.shr face=v1.face.chomp@head.face eyes=v1.eyes.closed@head.eyes
+  f 150 ~ prop=v1.prop.chicken3@body.hold:0,4 arml=v1.arml.hold@body.shl armr=v1.armr.hold@body.shr face=v1.face.chew1@head.face eyes=v1.eyes.happy@head.eyes
+  f 320 ~ face=v1.face.grin@head.face ears=v1.ears.flap@head.ears fx=fx.heart@head.ears:-11,-3 tail=v1.tail.wag2@body.tail
+  f 150 ~ prop=@body.hold:0,-2 arml=v1.arml.sip@body.shl armr=v1.armr.sip@body.shr face=v1.face.chomp@head.face eyes=v1.eyes.closed@head.eyes fx=- tail=v1.tail.wag1@body.tail
+  f 150 ~ prop=v1.prop.chicken4@body.hold:0,4 arml=v1.arml.hold@body.shl armr=v1.armr.hold@body.shr face=v1.face.chew1@head.face eyes=v1.eyes.happy@head.eyes
+  f 150 ~ face=v1.face.chew2@head.face tail=v1.tail.idle@body.tail
+  f 120 ~ prop=- arml=v1.arml.down@body.shl armr=v1.armr.down@body.shr fx=fx.sparkle@body.hold:0,-2 face=v1.face.smile@head.face
+  f 150 ~ fx=- eyes=v1.eyes.gaze@head.eyes ears=v1.ears.down@head.ears
+
+# "噗~": a jolt, a cloud, and a very innocent whistle. (cue: 2 → "不是我！" or "噗…")
+clip fart
+  f 200 +stand
+  f 80 ~ body=@legs.hip:0,-1 eyes=v1.eyes.wide@head.eyes ears=v1.ears.perk@head.ears
+  f 120 ~ body=@legs.hip fx=fx.stink1@body.tail:-4,-2
+  f 220 ~ fx=fx.stink2@body.tail:-5,-4 eyes=v1.eyes.side@head.eyes face=v1.face.whistle@head.face ears=v1.ears.down@head.ears
+  f 250 ~ fx=fx.stink2@body.tail:-5,-7
+  f 250 ~ fx=fx.note@head.ears:10,-2 face=v1.face.blush@head.face
+  f 250 ~ fx=fx.note@head.ears:12,-5
+  f 200 ~ fx=- eyes=v1.eyes.gaze@head.eyes face=v1.face.neutral@head.face
+
+# "Gotta go!", a toilet pops up behind her; she sits, strains, relief, flush, gone.
+# (cues: 0 "我想要尿尿！", 4 "嗯…！", 10 "呼…舒服了", 12 "哗啦～" — the opening is long enough to read the first line)
+pose toilet_sit +stand body=v1.body.front@legs.hip:0,5 arml=v1.arml.fist@body.shl armr=v1.armr.fist@body.shr propback=v1.prop.toilet@0,0
+
+clip toilet
+  f 450 +stand eyes=v1.eyes.wide@head.eyes face=v1.face.o@head.face ears=v1.ears.perk@head.ears fx=fx.sparkle@0,-12
+  f 300 ~ propback=v1.prop.toilet@0,0 fx=fx.sparkle@0,-18
+  f 100 ~ fx=- body=@legs.hip:0,2
+  f 120 +toilet_sit
+  f 300 ~ eyes=v1.eyes.squeeze@head.eyes face=v1.face.strain@head.face ears=v1.ears.back@head.ears
+  f 100 ~ head=@body.neck:-1,0
+  f 100 ~ head=@body.neck:1,0
+  f 100 ~ head=@body.neck:-1,0
+  f 300 ~ head=@body.neck fx=fx.sweat@head.ears:11,4
+  f 150 ~ fx=fx.splash@0,-2 eyes=v1.eyes.wide@head.eyes face=v1.face.o@head.face ears=v1.ears.perk@head.ears
+  f 400 ~ fx=fx.poop@head.ears:-13,2 eyes=v1.eyes.happy@head.eyes face=v1.face.relief@head.face ears=v1.ears.flap@head.ears
+  f 300 ~ fx=fx.poop@head.ears:-13,-2
+  f 300 ~ fx=fx.swirl@0,-7 ears=v1.ears.down@head.ears
+  f 200 ~ fx=fx.swirl@0,-10
+  f 120 +stand propback=v1.prop.toilet@0,0 body=@legs.hip:0,2 face=v1.face.smile@head.face
+  f 120 ~ body=@legs.hip
+  f 120 ~ fx=fx.sparkle@0,-18
+  f 150 ~ propback=- fx=fx.sparkle@0,-12
+  f 150 ~ fx=-
+
+# ------------------------------------------------------------------ the clipboard sign
+# The board is drawn by the app on prop.sign (the top of the stick) and unfolds as it goes
+# up; she keeps her runtime eyes, so she still blinks and can glance at the cursor.
+clip sign_up
+  f 90 +stand armr=v1.armr.sign_low@body.shr prop=v1.prop.sign_stick@body.shr:11,6 fx=fx.sparkle@body.shr:14,1 ears=v1.ears.flap@head.ears
+  f 100 ~ armr=v1.armr.sign_mid@body.shr prop=@body.shr:11,0 fx=- face=v1.face.smile@head.face
+  f 130 ~ armr=v1.armr.sign@body.shr prop=@body.shr:11,-5 ears=v1.ears.down@head.ears tail=v1.tail.wag1@body.tail
+
+# Breathing like idle; the body's bob carries the stick, and the stick leans a pixel now and then.
+clip sign_hold loop
+  f 400 +stand armr=v1.armr.sign@body.shr prop=v1.prop.sign_stick@body.shr:11,-5 face=v1.face.smile@head.face tail=v1.tail.wag1@body.tail
+  f 150 ~ head=@body.neck:0,1 ears=@head.ears:0,-1 tail=v1.tail.wag2@body.tail
+  f 150 ~ body=@legs.hip:0,1 head=@body.neck ears=@head.ears:0,-1 tail=v1.tail.wag1@body.tail
+  f 400 ~ ears=@head.ears prop=@body.shr:10,-5
+  f 150 ~ body=@legs.hip head=@body.neck:0,1 ears=@head.ears tail=v1.tail.wag2@body.tail
+  f 150 ~ head=@body.neck ears=@head.ears:0,1 prop=@body.shr:11,-5 tail=v1.tail.wag1@body.tail
+
+clip sign_down
+  f 100 +stand armr=v1.armr.sign_mid@body.shr prop=v1.prop.sign_stick@body.shr:11,0 face=v1.face.smile@head.face
+  f 90 ~ armr=v1.armr.sign_low@body.shr prop=@body.shr:11,6 fx=fx.sparkle@body.shr:14,1
+  f 120 ~ armr=v1.armr.down@body.shr prop=- fx=- face=v1.face.neutral@head.face
+
+# ------------------------------------------------------------------ focus mode: working on her little laptop
+# Eyes down on the screen (baked), key taps popping left and right, a nod, a blink.
+pose working +sitting prop=v1.prop.laptop@0,0 eyes=v1.eyes.half@head.eyes
+
+clip work_start
+  f 80 +stand body=@legs.hip:0,2 legs=v1.legs.wide
+  f 90 ~ body=@legs.hip:0,5 arml=v1.arml.fist@body.shl armr=v1.armr.fist@body.shr
+  f 90 +sitting head=@body.neck:0,-1
+  f 110 +sitting fx=fx.sparkle@0,-6
+  f 150 +working fx=fx.sparkle@0,-12 ears=v1.ears.flap@head.ears
+  f 130 ~ fx=- ears=v1.ears.down@head.ears
+
+clip work loop
+  f 240 +working fx=fx.star@-8,-11
+  f 180 ~ head=@body.neck:0,1 ears=@head.ears:0,-1 fx=fx.star@8,-11
+  f 240 ~ head=@body.neck ears=@head.ears fx=fx.star@-6,-12
+  f 180 ~ fx=fx.star@7,-12 tail=v1.tail.wag1@body.tail
+  f 300 ~ fx=- eyes=v1.eyes.side@head.eyes tail=v1.tail.idle@body.tail
+  f 120 ~ eyes=v1.eyes.closed@head.eyes
+  f 240 ~ eyes=v1.eyes.half@head.eyes head=@body.neck:0,1 ears=@head.ears:0,-1 fx=fx.star@-8,-11
+  f 180 ~ head=@body.neck ears=@head.ears fx=fx.star@6,-12
+
+clip work_end
+  f 120 +working eyes=v1.eyes.gaze@head.eyes fx=fx.sparkle@0,-10
+  f 120 +sitting fx=fx.sparkle@0,-6
+  f 90 +sitting head=@body.neck:0,-1
+  f 90 +stand body=@legs.hip:0,5 legs=v1.legs.wide arml=v1.arml.fist@body.shl armr=v1.armr.fist@body.shr
+  f 90 ~ body=@legs.hip:0,2
+  f 120 +stand
+
+# ------------------------------------------------------------------ water reminder: a glass pops up, she drinks, refreshed
+clip drink_water
+  f 90 +stand fx=fx.sparkle@body.hold:0,-2
+  f 120 ~ fx=- prop=v1.prop.glass@body.hold:0,4 arml=v1.arml.hold@body.shl armr=v1.armr.hold@body.shr face=v1.face.smile@head.face ears=v1.ears.flap@head.ears
+  f 250 ~ ears=v1.ears.down@head.ears
+  f 150 ~ prop=@body.hold:0,-4 arml=v1.arml.sip@body.shl armr=v1.armr.sip@body.shr eyes=v1.eyes.closed@head.eyes face=-
+  f 300 ~ head=@body.neck:0,-1
+  f 300 ~ head=@body.neck
+  f 220 ~ prop=@body.hold:0,4 arml=v1.arml.hold@body.shl armr=v1.armr.hold@body.shr eyes=v1.eyes.happy@head.eyes face=v1.face.grin@head.face fx=fx.sparkle@head.ears:11,-2
+  f 120 ~ prop=- arml=v1.arml.down@body.shl armr=v1.armr.down@body.shr fx=fx.sparkle@body.hold:0,-2
+  f 150 ~ fx=- face=v1.face.smile@head.face eyes=v1.eyes.gaze@head.eyes
+
+# ------------------------------------------------------------------ wardrobe scenes
+# The app swaps her colours (and the long/short look) at the "@swap" cue, while she is hidden.
+# Changing behind a folding screen. (cues from the app: 1 outfit_start, 4 @swap, 9 outfit_done)
+clip change_clothes
+  f 90 +stand fx=fx.sparkle@0,-20
+  f 110 ~ prop=v1.prop.screen_half@0,0 fx=fx.sparkle@0,-28
+  f 140 ~ prop=v1.prop.screen@0,0 fx=- eyes=v1.eyes.side@head.eyes face=v1.face.smirk@head.face
+  f 160 ~ fx=fx.top@-13,-27 head=@body.neck:-1,0
+  f 160 ~ fx=fx.dress@13,-29 head=@body.neck:1,0
+  f 160 ~ fx=fx.top@-17,-38 head=@body.neck
+  f 200 ~ fx=fx.sparkle@0,-30 eyes=v1.eyes.closed@head.eyes
+  f 110 ~ prop=v1.prop.screen_half@0,0 fx=fx.sparkle@0,-24
+  f 110 ~ prop=- fx=fx.sparkle@0,-18
+  f 500 ~ fx=- eyes=v1.eyes.happy@head.eyes face=v1.face.grin@head.face armr=v1.armr.wave1@body.shr ears=v1.ears.flap@head.ears tail=v1.tail.wag2@body.tail
+  f 160 ~ armr=v1.armr.wave2@body.shr tail=v1.tail.wag1@body.tail
+  f 200 ~ armr=v1.armr.down@body.shr eyes=v1.eyes.gaze@head.eyes face=v1.face.smile@head.face ears=v1.ears.down@head.ears tail=v1.tail.idle@body.tail
+
+# The growth potion: drink, poof, long hair again. (cues from the app: 3 potion, 6 @swap, 9 hair_long)
+# Her hair reaches her waist, so a second cloud (on the prop layer) covers it lower down.
+clip potion
+  f 90 +stand fx=fx.sparkle@body.hold:0,-2
+  f 120 ~ fx=- prop=v1.prop.potion@body.hold:0,4 arml=v1.arml.hold@body.shl armr=v1.armr.hold@body.shr eyes=v1.eyes.wide@head.eyes face=v1.face.o@head.face ears=v1.ears.perk@head.ears
+  f 300 ~ eyes=v1.eyes.side@head.eyes face=v1.face.smirk@head.face
+  f 150 ~ prop=@body.hold:0,-4 arml=v1.arml.sip@body.shl armr=v1.armr.sip@body.shr eyes=v1.eyes.closed@head.eyes face=-
+  f 300 ~ head=@body.neck:0,-1
+  f 200 ~ head=@body.neck prop=fx.poof1@head.face:0,12 arml=v1.arml.down@body.shl armr=v1.armr.down@body.shr eyes=v1.eyes.squeeze@head.eyes face=v1.face.wavy@head.face fx=fx.poof1@head.face:0,-6
+  f 160 ~ prop=fx.poof2@head.face:0,14 fx=fx.poof2@head.face:0,-1
+  f 160 ~ prop=fx.poof2@head.face:0,13 fx=fx.poof2@head.face:0,-2
+  f 200 ~ prop=- fx=fx.poof3@head.face:0,-4 eyes=v1.eyes.wide@head.eyes face=v1.face.o@head.face
+  f 220 ~ fx=fx.sparkle@head.ears:14,-2 eyes=v1.eyes.sparkle@head.eyes face=v1.face.grin@head.face ears=v1.ears.flap@head.ears
+  f 300 ~ arml=v1.arml.face@body.shl handf=v1.handf.rub@head.eyes:-12,-2 fx=fx.sparkle@head.ears:-14,-4
+  f 200 ~ handf=- arml=v1.arml.down@body.shl fx=- eyes=v1.eyes.happy@head.eyes
+  f 200 ~ eyes=v1.eyes.gaze@head.eyes face=v1.face.smile@head.face ears=v1.ears.down@head.ears
+
+# The haircut: snip snip at her long locks, hair falls, poof, a bob. (cues from the app: 1 haircut, 6 @swap, 12 hair_short)
+clip haircut
+  f 90 +stand fx=fx.sparkle@head.ears:-15,18
+  f 160 ~ fx=fx.scissors_open@head.ears:-16,20 eyes=v1.eyes.side@head.eyes face=v1.face.o@head.face ears=v1.ears.perk@head.ears
+  f 120 ~ fx=fx.scissors_shut@head.ears:-16,20 eyes=v1.eyes.squeeze@head.eyes
+  f 160 ~ fx=fx.tufts@head.ears:-16,28 eyes=v1.eyes.closed@head.eyes
+  f 160 ~ fx=fx.scissors_open@head.ears:16,20
+  f 120 ~ fx=fx.scissors_shut@head.ears:16,20
+  f 150 ~ prop=fx.poof2@head.face:0,14 fx=fx.poof2@head.face:0,-1 face=v1.face.wavy@head.face
+  f 150 ~ prop=fx.poof2@head.face:0,13 fx=fx.poof2@head.face:0,-2
+  f 200 ~ prop=- fx=fx.poof3@head.face:0,-4 eyes=v1.eyes.wide@head.eyes face=v1.face.o@head.face
+  f 120 ~ fx=- head=@body.neck:-1,0 eyes=v1.eyes.closed@head.eyes face=v1.face.smile@head.face
+  f 120 ~ head=@body.neck:1,0
+  f 120 ~ head=@body.neck:-1,0
+  f 250 ~ head=@body.neck eyes=v1.eyes.happy@head.eyes face=v1.face.grin@head.face ears=v1.ears.flap@head.ears fx=fx.sparkle@head.ears:14,-2
+  f 200 ~ fx=- eyes=v1.eyes.gaze@head.eyes face=v1.face.smile@head.face ears=v1.ears.down@head.ears
+
+# ------------------------------------------------------------------ 防干扰模式: peeking from behind an edge
+# The app sinks her behind the taskbar until the line just under her eyes is the edge; her
+# runtime eyes still blink and follow the cursor. Long frames: almost no wake-ups.
+clip peek loop
+  f 2600 +stand tail=- handf=v1.handf.grip@head.face:0,0
+  f 160 ~ ears=v1.ears.flap@head.ears
+  f 160 ~ ears=v1.ears.down@head.ears
+  f 3200 ~
+  f 160 ~ ears=v1.ears.flap@head.ears
+  f 200 ~ ears=v1.ears.down@head.ears
+
+# From a side edge: facing you, her head leaning well out from behind it (her body stays
+# behind). The app shows her from just short of the middle of her face, so one eye, an ear
+# and a hand curled round the edge peek in; her runtime eyes still blink and follow the cursor.
+clip peek_side_r loop
+  f 2600 +stand body=@legs.hip:2,0 head=@body.neck:6,0 tail=- handf=v1.handf.rub@head.face:-1,6
+  f 160 ~ ears=v1.ears.flap@head.ears
+  f 160 ~ ears=v1.ears.down@head.ears
+  f 3200 ~
+  f 160 ~ ears=v1.ears.flap@head.ears
+  f 200 ~ ears=v1.ears.down@head.ears
+clip peek_side_l mirror=peek_side_r
+
+# ------------------------------------------------------------------ runtime-drawn eyes (placed on eyes.gaze by the app)
+clip gaze_open_c
+  f 1000 eyes=v1.eyes.open_c
+clip gaze_open_l
+  f 1000 eyes=v1.eyes.open_l
+clip gaze_open_r
+  f 1000 eyes=v1.eyes.open_r
+clip gaze_blink
+  f 40 eyes=v1.eyes.blink1
+  f 70 eyes=v1.eyes.blink2
+  f 40 eyes=v1.eyes.blink1

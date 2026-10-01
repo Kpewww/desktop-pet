@@ -1,0 +1,81 @@
+# 小柴 palette — every pixel in art/parts must use one of these keys.
+# key  hex       name             outline drawn next to this colour (default: the 'outline' in clips.txt)
+.      -         transparent
+K      2b1d2e    outline
+k      6e4a58    outline_soft
+
+# hair: near-black with a cool grey-violet sheen so it still reads on dark wallpapers
+H      4a2e22    hair
+h      6b4331    hair_mid
+g      93634a    hair_sheen
+P      6b4331    streak          
+p      93634a    streak_light    
+
+# skin & face
+S      ffe4d6    skin             >k
+s      f3c2ad    skin_shade       >k
+r      f7a2a6    blush            >k
+E      2b1a1f    eye_dark
+e      6b4238    eye_brown
+W      ffffff    white            >k
+L      d9707e    lips             >k
+
+# puppy ears and tail: cream fur with pink insides, so they stand out against her black hair
+O      e8913f    fur              >k
+f      c26a2a    fur_shade        >k
+i      f29bb2    inner_ear        >k
+
+# ---- outfit slots: art/aly/outfits.txt recolours these per outfit; these are outfit 1
+# (white cardigan, dusty-pink long dress, navy slippers with white bows). Parts are drawn once.
+C      8fb3d9    cardigan         >k  # the cardigan's front panels; = the dress when she wears none
+c      6f93bb    cardigan_shade   >k
+1      8fb3d9    sleeve           >k  # both arms; skin for a sleeveless dress
+2      6f93bb    sleeve_shade     >k
+4      8fb3d9    shoulder         >k  # the top edge of her shoulders; skin for a sleeveless dress
+5      8fb3d9    strap            >k  # one pixel on each shoulder: a strap or a bow
+3      ffe4d6    necklace         >k  # at the neckline; = skin when there is none
+7      fbf7ee    bodice           >k  # the dress above the waist (a top, over a different skirt)
+D      fbf7ee    dress            >k  # the skirt
+d      ddd5c6    dress_shade      >k
+N      2c315f    navy                # shoes
+n      474d8a    navy_light
+6      ffffff    bow              >k  # the bows on her slippers
+T      efe6df    sock             >k  # = skin with bare legs
+
+# effects (drawn after the outline pass, so they carry their own edges)
+R      ee4e6a    red
+Q      9e2440    red_dark
+Y      ffd66b    yellow
+y      d99a2e    yellow_dark
+B      9fd0ff    blue
+b      4f86cf    blue_dark
+Z      e6eeff    zzz
+
+# props: smoothie, yakiniku grill, toilet, stink
+m      d9b28c    milk_tea         >k
+M      5a3a2a    tapioca        >k
+o      f2f1f6    cup_clear        >k
+G      55525e    metal
+F      ff8a3d    fire             >k
+u      a4523a    meat
+U      d98070    meat_light       >k
+w      dcdce6    smoke            >k
+x      8a5a3c    poop
+X      5c3a26    poop_dark
+v      b9d46a    stink            >k
+V      7c9a38    stink_dark
+
+# her new foods (pomegranate, chicken stick) and the wardrobe scenes (the potion)
+q      f3dfc2    pith             >k
+l      e3a857    crust            >k
+z      b8793a    crust_dark
+I      8f5cd6    potion
+&      c7a6f2    potion_light     >k
+
+# the clipboard sign's stick (the board itself is drawn by the app)
+j      dfae74    wood
+J      a8703f    wood_dark
+
+# the little laptop (focus mode)
+a      d6dae4    laptop
+A      a3a9ba    laptop_shade

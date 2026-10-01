@@ -1,0 +1,282 @@
+# 示例宠物 v1 — front view rig. No outer outline: ArtBuild draws it.
+# Rig: legs(hip) -> body(neck, arms, tail) -> head(eyes, face, ears, hair, locks)
+
+# ------------------------------------------------------------------ head
+# Symmetric base; the streak (here the same brown as the hair) is patched onto HER left (= screen right) below.
+part v1.head.base sym=13 origin=13,24 ears=13,2 hair=13,0 eyes=13,14 face=13,20 locks=13,24
+.........HHHHH
+.......HHHHHHH
+.....HHHHhhhhh
+....HHhhhhgggg
+...HHhhggghhhh
+...Hhhghhhhhhh
+..HHhhhhhhhhhh
+..HhhHhhHhhHhh
+..HhhHhhHhhHhh
+..HhHhhhHhhhHh
+..HhHhhHhhhHhh
+..HhHhhHhhhHhh
+..HhHShhShhhSh
+..HhHSShSShSSS
+..HhhHSSSSSSSS
+..HhgHSSSSSSSS
+..HhgHSSSSSSSS
+..HhhHrrSSSSSS
+..HhhHSSSSSSSS
+..HhhHhSSSSSSS
+..HhhHhhSSSSSS
+..HhhHhhhsSSSS
+..HhhHhhhhsSSS
+..HhhHhhhhhsss
+..HhhHhhhhhhss
+end
+
+part v1.head.front from=v1.head.base mirror=v1.head.front
+_
+_
+_
+_
+_
+_
+_
+_
+_
+_
+_____________________PpP
+____________________PPpP
+____________________hPpP
+_____________________PpP
+_____________________PpP
+_____________________PpP
+_____________________PpP
+_____________________PpP
+_____________________PpP
+_____________________PpP
+_____________________PpP
+_____________________PpP
+_____________________PpP
+_____________________PpP
+_____________________PpP
+end
+
+# ------------------------------------------------------------------ eyes (drawn by the app)
+# 15x5, sits on head.eyes. Winged liner tips at the outer corners.
+part v1.eyes.gaze origin=0,0 gaze=0,0
+.
+end
+
+part v1.eyes.open_c origin=7,2
+E.............E
+.EEEE.....EEEE.
+.EWeE.....EWeE.
+.EeeE.....EeeE.
+..ee.......ee..
+end
+
+part v1.eyes.open_l origin=7,2
+E.............E
+.EEEE.....EEEE.
+.WeEE.....WeEE.
+.eeEE.....eeEE.
+.ee.......ee...
+end
+
+part v1.eyes.open_r origin=7,2
+E.............E
+.EEEE.....EEEE.
+.EEWe.....EEWe.
+.EEee.....EEee.
+...ee.......ee.
+end
+
+part v1.eyes.blink1 origin=7,2
+E.............E
+...............
+.EEEE.....EEEE.
+.EeeE.....EeeE.
+...............
+end
+
+part v1.eyes.blink2 origin=7,2
+...............
+E.............E
+.EEEE.....EEEE.
+...............
+...............
+end
+
+# ------------------------------------------------------------------ mouths (on head.face)
+part v1.face.neutral origin=1,0
+sLs
+end
+
+part v1.face.smile origin=1,0
+L.L
+.L.
+end
+
+# ------------------------------------------------------------------ ears (on head.ears)
+# Floppy puppy ears hanging outside the head; explicit K edge keeps them apart from the hair.
+part v1.ears.down sym=18 origin=18,0
+...................
+.......KKK.........
+.....KKfOOK........
+....KfOOOOOK.......
+...KfOOOOOOK.......
+..KfOOOiiOOK.......
+..KfOOiiiOK........
+.KfOOOiiiOK........
+.KfOOOiiOOK........
+.KfOOOOOOOK........
+.KfOOOOOOK.........
+..KffOOOK..........
+...KKKKK...........
+end
+
+# ------------------------------------------------------------------ hair behind and in front
+part v1.hairback.still sym=15 origin=15,0 mirror=v1.hairback.still
+..........HHHHHH
+........HHHHHHHH
+......HHHHHHHHHH
+.....HHHHHHHHHHH
+....HHHHHHHHHHHH
+...HHHHHHHHHHHHH
+..HHHHHHHHHHHHHH
+..HHHHHHHHHHHHHH
+.HHhHHHHHHHHHHHH
+HHhhHHHHHHHHHHHH
+HHhhHHHHHHHHHHHH
+HhghHHHHHHHHHHHH
+HhghHHHHHHHHHHHH
+HhhhHHHHHHHHHHHH
+HhhhHHHHHHHHHHHH
+HHhhHHHHHHHHHHHH
+HHhhHHHHHHHHHHHH
+HhhhHHHHHHHHHHHH
+HhghHHHHHHHHHHHH
+HhghHHHHHHHHHHHH
+HhhhHHHHHHHHHHHH
+HhhhHHHHHHHHHHHH
+HHhhHHHHHHHHHHHH
+HHhhHHHHHHHHHHHH
+HhhhHHHHHHHHHHHH
+HhhhHHHHHHHHHHHH
+HhhhHHHHHHHHHHHH
+HhhhHHHHHHHHHHHH
+HhhhHHHHHHHHHHHH
+HhhHHHHHHHHHHHHH
+HhhHH...........
+.HhH............
+.HH.............
+..H.............
+end
+
+# Long locks falling over the shoulders (hangs from head.locks, drawn over the arms).
+part v1.hairfront.base sym=13 origin=13,0
+..HhhH........
+..HhhH........
+..HhgH........
+..HhgH........
+..HhhH........
+..HhhH........
+..HhhH........
+...HhH........
+...HhH........
+...HH.........
+....H.........
+end
+
+part v1.hairfront.still from=v1.hairfront.base mirror=v1.hairfront.still
+_____________________PpPH
+_____________________PpPH
+_____________________PpPH
+_____________________PpPH
+_____________________PpPH
+_____________________PpPH
+_____________________PpPH
+_____________________PpH
+_____________________PpH
+______________________PP
+_______________________P
+end
+
+# ------------------------------------------------------------------ body (torso + long dress, no arms)
+part v1.body.front sym=10 origin=10,25 neck=10,0 arms=10,2 shl=2,2 shr=18,2 tail=15,22 hold=10,11
+.........SS
+.........sS
+...44544733
+..CCCCCc777
+..CCCCCc777
+..CCCCCc777
+..CCCCCc777
+..CCCCCc777
+..CCCCCc777
+..CCCCCc777
+..CCCCCc777
+..CCCCCc777
+..CCCCCc777
+..CCCCCc777
+..cccccc777
+....dDDDDDD
+....dDDDDDD
+...dDDDDDDD
+...dDDDDDDD
+...dDDDdDDD
+..dDDDDdDDD
+..dDDDDdDDD
+..dDDDDdDDD
+.dDDDDDdDDD
+.dDDDDDdDDD
+.dddddddddd
+end
+
+# ------------------------------------------------------------------ arms
+# Left arm (screen left) hangs from body.shl; right arms are flips of the left ones.
+# Origins are the shoulder joint.
+part v1.arml.down origin=3,0
+..11.
+.1112
+.1112
+1112.
+1112.
+1112.
+1112.
+1112.
+2112.
+2112.
+2112.
+2222.
+.SSs.
+.sS..
+end
+
+part v1.armr.down from=v1.arml.down flip
+end
+
+# ------------------------------------------------------------------ legs (canvas origin = between the feet)
+part v1.legs.front sym=6 origin=6,8 hip=6,0
+...SS..
+...SS..
+...Ss..
+...TT..
+...TT..
+..NNNN.
+.NN6NN.
+.NNNNN.
+..nnnn.
+end
+
+# ------------------------------------------------------------------ tail (peeks out behind the dress)
+part v1.tail.idle origin=0,10
+...........OO.
+.........OOOOO
+........OOOOOO
+.......OOOOOOf
+......OOOOOOf.
+....OOOOOOOf..
+..OOOOOOOff...
+.OOOOOOff.....
+OOOOOff.......
+OOOff.........
+Of............
+end

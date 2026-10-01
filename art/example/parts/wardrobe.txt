@@ -1,0 +1,182 @@
+# 示例宠物 v1 — the wardrobe scenes : changing behind a
+# folding screen, the growth potion, the haircut. Outfits themselves are only colours (outfits.txt).
+
+# ------------------------------------------------------------------ changing behind a folding screen
+# Three paper panels in a wooden frame (a sun, a puppy, a sprig), tall enough to hide her.
+part v1.prop.screen origin=15,26
+.JJJJJJJJ..JJJJJJJJ..JJJJJJJJ.
+JjjjjjjjjJJjjjjjjjjJJjjjjjjjjJ
+JjoooooojJJjoooooojJJjoooooojJ
+JjoooooojJJjoooooojJJjoooooojJ
+JjooYYoojJJjoooooojJJjoooooojJ
+JjoYYYoojJJjooOOoojJJjoooVoojJ
+JjoYYooojJJjoOOiOojJJjooVVoojJ
+JjoooooojJJjoOOiiojJJjoVVooojJ
+JjoooooojJJjooOOiojJJjooVoVojJ
+JjoooooojJJjooooiojJJjoooVVojJ
+JjoooooojJJjoooooojJJjooooVojJ
+JjoooooojJJjoooooojJJjoooooojJ
+JjoooooojJJjoooooojJJjoooooojJ
+JjoooooojJJjoooooojJJjoooooojJ
+JjoooooojJJjoooooojJJjoooooojJ
+JjoooooojJJjoooooojJJjoooooojJ
+JjoooooojJJjoooooojJJjoooooojJ
+JjoooooojJJjoooooojJJjoooooojJ
+JjoooooojJJjoooooojJJjoooooojJ
+JjoooooojJJjoooooojJJjoooooojJ
+JjoooooojJJjoooooojJJjoooooojJ
+JjoooooojJJjoooooojJJjoooooojJ
+JjjjjjjjjJJjjjjjjjjJJjjjjjjjjJ
+JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
+.J......J..J......J..J......J.
+.J......J..J......J..J......J.
+.JJ....JJ..JJ....JJ..JJ....JJ.
+end
+
+# Half open (going up / folding away).
+part v1.prop.screen_half origin=8,26
+.JJJJJJJJ.JJJJJJ.
+JjjjjjjjjJjjjjjjJ
+JjoooooojJjoooojJ
+JjoooooojJjoooojJ
+JjooYYoojJjoooojJ
+JjoYYYoojJjoOOojJ
+JjoYYooojJjOOiojJ
+JjoooooojJjOOiojJ
+JjoooooojJjoOiojJ
+JjoooooojJjooiojJ
+JjoooooojJjoooojJ
+JjoooooojJjoooojJ
+JjoooooojJjoooojJ
+JjoooooojJjoooojJ
+JjoooooojJjoooojJ
+JjoooooojJjoooojJ
+JjoooooojJjoooojJ
+JjoooooojJjoooojJ
+JjoooooojJjoooojJ
+JjoooooojJjoooojJ
+JjoooooojJjoooojJ
+JjoooooojJjoooojJ
+JjjjjjjjjJjjjjjjJ
+JJJJJJJJJJJJJJJJJ
+.J......J.J....J.
+.J......J.J....J.
+.JJ....JJ.JJ..JJ.
+end
+
+# Clothes tossed over the top (post-outline, so they carry their own edge): a top and a dress.
+part fx.top origin=3,3
+.KK.KK.
+KCCKCCK
+KCCCCCK
+.KCCCK.
+.KCCCK.
+.KKKKK.
+end
+
+part fx.dress origin=3,4
+..KKK..
+.KDDDK.
+.KDDDK.
+KDDDDDK
+KDDDDDK
+KKKKKKK
+end
+
+# ------------------------------------------------------------------ the growth potion
+# A round flask with a cork, held in both hands like the cup (origin = bottom centre).
+part v1.prop.potion origin=5,8
+....jj.....
+....oo.....
+...oIIo....
+..oIIIIo...
+.oI&IIIIo..
+SoIIIIIIoS.
+kSoIIIIoSk.
+.k.oooo.k..
+...........
+end
+
+# ------------------------------------------------------------------ the haircut, and the poof that hides the change
+part fx.scissors_open origin=2,4
+G...G
+.G.G.
+..G..
+.R.R.
+R...R
+end
+
+part fx.scissors_shut origin=2,4
+..G..
+..G..
+..G..
+.RRR.
+R...R
+end
+
+part fx.tufts origin=2,2
+H..h.
+.h..H
+..H..
+end
+
+part fx.poof1 origin=6,5
+...kkk..kkk..
+..kwwwkkwwwk.
+.kwwwwwwwwwk.
+kwwwWwwwwwwwk
+.kwwwwwwwWwk.
+..kwwwwwwwk..
+...kkkkkkk...
+end
+
+part fx.poof2 sym=17 origin=17,17
+.............kkkkk
+..........kkkwwwww
+.......kkkwwwwwwww
+......kwwwwwwwwwww
+....kkwwwwwwwwwwww
+...kwwwwwwwWWwwwww
+..kwwwwwwwWWWwwwww
+..kwwwwwwwwWwwwwww
+.kwwwwwwwwwwwwwwww
+.kwwwwWwwwwwwwwwww
+kwwwwWWWwwwwwwwwww
+kwwwwwWwwwwwwwwwww
+kwwwwwwwwwwwwwwwww
+kwwwwwwwwwwwwwwwww
+kwwwwwwwwwwwwWWwww
+kwwwwwwwwwwwwWWwww
+kwwwwwwwwwwwwwwwww
+kwwwwwwwwwwwwwwwww
+kwwwwwwwwwwwwwwwww
+.kwwwwwwwwwwwwwwww
+.kwwwwWWwwwwwwwwww
+..kwwwWWwwwwwwwwww
+..kwwwwwwwwwwwwwww
+...kwwwwwwwwwwwwww
+....kkwwwwwwwwwwww
+......kkwwwwwwwwww
+........kkkwwwwwww
+...........kkkkkkk
+end
+
+part fx.poof3 origin=15,14
+....kkk...............kkk....
+...kwwwk.............kwwwk...
+..kwwWwwk...........kwWwwwk..
+..kwwwwwk.....kkk...kwwwwwk..
+...kwwwk.....kwwwk...kwwwk...
+....kkk......kwWwk....kkk....
+..............kkk............
+.............................
+.kkk.......................k.
+kwwwk....................kkwk
+kwWwk....................kwwk
+kwwwk.....................kk.
+.kkk.........................
+...........kkkk..............
+..........kwwwwk.............
+..........kwWwwk.............
+...........kkkk..............
+end

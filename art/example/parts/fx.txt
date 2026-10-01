@@ -1,0 +1,103 @@
+# 示例宠物 v1 — effects. Drawn after the outline pass, so each carries its own dark edge.
+# Positions are chosen in clips.txt relative to head anchors.
+
+part fx.z1 origin=1,1
+bbb
+.b.
+bbb
+end
+
+part fx.z2 origin=2,2
+bbbb
+bZZb
+.bZb
+bZZb
+bbbb
+end
+
+part fx.z3 origin=2,2
+bbbbb
+bZZZb
+..bZb
+.bZb.
+bZZZb
+bbbbb
+end
+
+# 💢 anger mark, pulsing between two sizes
+part fx.anger1 origin=3,3
+.QQ.QQ.
+QRR.RRQ
+QR...RQ
+.......
+QR...RQ
+QRR.RRQ
+.QQ.QQ.
+end
+
+part fx.anger2 origin=2,2
+QQ.QQ
+QR.RQ
+.....
+QR.RQ
+QQ.QQ
+end
+
+part fx.heart origin=2,2
+.Q.Q.
+QRQRQ
+QRRRQ
+.QRQ.
+..Q..
+end
+
+part fx.heart_small origin=1,1
+Q.Q
+QRQ
+.Q.
+end
+
+part fx.sweat origin=1,2
+.b.
+bBb
+bBb
+.b.
+end
+
+part fx.steam1 origin=3,2
+..kk...
+.kWWk..
+kWWWWk.
+.kkkk..
+end
+
+part fx.steam2 origin=3,2
+.kk.kk.
+kWWkWWk
+.kkkkk.
+end
+
+part fx.star origin=1,1
+.y.
+yYy
+.y.
+end
+
+part fx.exclaim origin=1,5
+yYy
+yYy
+yYy
+.y.
+yYy
+.y.
+end
+
+part fx.question origin=2,6
+.yyy.
+yY.Yy
+...Yy
+..Yy.
+..y..
+.....
+..y..
+end

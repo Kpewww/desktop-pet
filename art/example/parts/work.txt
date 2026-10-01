@@ -1,0 +1,34 @@
+# 示例宠物 v1 — focus mode (a little laptop) and the water reminder (a glass of water).
+
+# ------------------------------------------------------------------ laptop, seen from behind the lid
+# Sits on the floor in front of her knees while she sits; origin = the front edge of its base.
+part v1.prop.laptop origin=10,10
+.aaaaaaaaaaaaaaaaaaa.
+.aaaaaaaaaaaaaaaaaaa.
+.aaaaaaaaaaaaaaaaaaa.
+.aaaaaaaararaaaaaaaa.
+.aaaaaaarrrrraaaaaaa.
+.aaaaaaaarrraaaaaaaa.
+.aaaaaaaaaraaaaaaaaa.
+.aaaaaaaaaaaaaaaaaaa.
+.aaaaaaaaaaaaaaaaaaa.
+.AAAAAAAAAAAAAAAAAAA.
+AAAAAAAAAAAAAAAAAAAAA
+end
+
+
+# ------------------------------------------------------------------ glass of water, held in both hands
+# Origin = glass bottom centre, placed on body.hold like the smoothie cup.
+part v1.prop.glass origin=5,10
+..ooooooo..
+..o.....o..
+..oBBBBBo..
+..oBBBBBo..
+.SoBBBBBoS.
+SSSbBBBbSSS
+kSSbbbbbSSk
+.kobbbbbok.
+..obbbbbo..
+..obbbbbo..
+...ooooo...
+end

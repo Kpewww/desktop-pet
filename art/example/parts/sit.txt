@@ -1,0 +1,21 @@
+# 示例宠物 v1 — sitting on the floor hugging her knees. Front view.
+# Origin = floor centre. Knees sit right under the chin; sleeping lowers the head onto them.
+part v1.body.sit sym=10 origin=10,17 neck=10,0 tail=16,15
+.........SS
+......111SS
+.....111dDD
+....111dDDD
+....11dDDDD
+...111dDDDD
+...11dDDDDD
+...21dDDDDD
+...21111111
+...S2111111
+...s2222222
+...dDDDDDDD
+..dDDDDDDDD
+..dDDDNNNND
+.dDDDNN6NND
+ddDDDNNNNND
+dddddnnnnnd
+end

@@ -1,0 +1,25 @@
+# build output
+out/
+dist/
+bin/
+obj/
+art/out/
+
+# private reference photos — never commit
+reference_pics/
+reference_pics_kong/
+
+# editor / OS
+.vs/
+.vscode/
+*.user
+Thumbs.db
+desktop.ini
+
+# large font sources (downloaded by build.ps1 font)
+art/fonts/*.bdf
+art/fonts/*.zip
+
+# your own pets' photos
+reference_pics*/
+photos/

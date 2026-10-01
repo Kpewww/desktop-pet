@@ -1,0 +1,78 @@
+# 小柴's wardrobe: every outfit recolours the outfit slots of palette.txt. The parts are drawn
+# once; an outfit only changes these colours (the first outfit is the default and matches
+# palette.txt). Make your own: copy a block, give it an id in [brackets] and a name.
+#
+#   C c    cardigan front panels / shade (no cardigan: = the dress, so it disappears)
+#   1 2    sleeves / shade (sleeveless: skin ffe4d6 / f3c2ad)
+#   4      top edge of the shoulders (sleeveless: skin)     5  a strap or bow on each shoulder
+#   3      necklace at the neckline (none: skin ffe4d6)
+#   7      bodice (the dress above the waist; a top when the skirt is different)
+#   D d    skirt / shade      N n  shoes / light      6  shoe bows      T  socks (bare legs: skin)
+
+[blue]
+name = 蓝色开衫+白裙
+C = 8fb3d9
+c = 6f93bb
+1 = 8fb3d9
+2 = 6f93bb
+4 = 8fb3d9
+5 = 8fb3d9
+3 = ffe4d6
+7 = fbf7ee
+D = fbf7ee
+d = ddd5c6
+N = 2c315f
+n = 474d8a
+6 = ffffff
+T = efe6df
+
+[green]
+name = 绿色吊带裙
+C = 7fb08a
+c = 5f8f6a
+1 = ffe4d6
+2 = f3c2ad
+4 = ffe4d6
+5 = 7fb08a
+3 = ffe4d6
+7 = 7fb08a
+D = 7fb08a
+d = 5f8f6a
+N = 5b4231
+n = 7c5d45
+6 = f1e9dc
+T = ffe4d6
+
+[yellow]
+name = 黄色上衣+牛仔裙
+C = f3d36b
+c = d6b24a
+1 = f3d36b
+2 = d6b24a
+4 = f3d36b
+5 = f3d36b
+3 = ffe4d6
+7 = f3d36b
+D = 6f8fb8
+d = 56729a
+N = f2f0ec
+n = cfcac2
+6 = 6f8fb8
+T = efe6df
+
+[red]
+name = 红格子开衫+黑裙
+C = c9504a
+c = a03b37
+1 = c9504a
+2 = a03b37
+4 = c9504a
+5 = c9504a
+3 = fffdf8
+7 = 2b2631
+D = 2b2631
+d = 1d1a22
+N = 1d1a22
+n = 3b3644
+6 = c9504a
+T = 2b2631

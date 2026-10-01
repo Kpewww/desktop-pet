@@ -1,0 +1,5 @@
+# 小柴 的两个造型。每行：造型名，然后是这个造型换掉的部件（原部件=新部件）。第一个是默认的。
+# 短发（默认）
+short v1.hairback.still=v1.hairbackS.still v1.hairback.fly=v1.hairbackS.fly v1.hairfront.still=v1.hairfrontS.still v1.side.hair_a=v1.side.hairS_a v1.side.hair_b=v1.side.hairS_b
+# 长发（喝生发药水之后）
+long -

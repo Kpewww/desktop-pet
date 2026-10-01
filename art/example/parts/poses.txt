@@ -1,0 +1,284 @@
+# 示例宠物 v1 — pose variants: arms, legs, tail, hair. Right arms are flips of left arms.
+
+# ------------------------------------------------------------------ arms (origin = shoulder joint)
+# Hooray / falling: raised up and out, hands clear of the ears.
+part v1.arml.up origin=9,12
+SS........
+sSs.......
+.22.......
+.112......
+..112.....
+..1112....
+...112....
+....112...
+....1112..
+.....112..
+......112.
+......1112
+.......111
+end
+part v1.armr.up from=v1.arml.up flip
+end
+
+# Straight up (stretch): mostly hidden behind the head, hands above it.
+part v1.arml.stretch origin=5,17
+.SS...
+.sS...
+.22...
+.112..
+.112..
+.112..
+..112.
+..112.
+..112.
+..112.
+...112
+...112
+...112
+...112
+...112
+...112
+...111
+....11
+end
+part v1.armr.stretch from=v1.arml.stretch flip
+end
+
+# Flung out sideways (struggling).
+part v1.arml.out origin=9,0
+.........11
+.......1112
+.....11112.
+...11112...
+.22112.....
+SS2........
+sS.........
+end
+part v1.armr.out from=v1.arml.out flip
+end
+
+# Fist held down and a little out (angry).
+part v1.arml.fist origin=3,0
+..11.
+.1112
+1112.
+1112.
+1112.
+1112.
+112..
+112..
+212..
+222..
+sSs..
+sss..
+end
+part v1.armr.fist from=v1.arml.fist flip
+end
+
+# Waving hand beside the head (right arm is the waving one).
+part v1.armr.wave1 origin=0,11
+.....SS.
+....sSSs
+.....22.
+....211.
+....112.
+...211..
+...112..
+..211...
+..112...
+.211....
+.112....
+112.....
+end
+part v1.armr.wave2 origin=0,11
+......SS
+.....SSs
+....22..
+....112.
+...211..
+...112..
+..211...
+..112...
+..112...
+.211....
+.112....
+112.....
+end
+
+# Forearm raised to the face (rubbing an eye / covering a yawn); the hand itself is handf.
+part v1.arml.face origin=3,0
+..11...
+.1112..
+.11122.
+111112.
+211112.
+.21112.
+..222..
+end
+
+# Arms crossed over the chest (sulking), drawn as one piece on the left arm layer.
+part v1.arms.cross origin=3,0
+..11..............11..
+.1112............2111.
+.1112............2111.
+.11112222222222222111.
+.11111111111111111111.
+.2111111sS11111111112.
+..2222222sS211112222..
+..........ss2.........
+end
+
+# ------------------------------------------------------------------ hands in front of the face (post-outline: own edges)
+part v1.handf.rub origin=2,2
+.kkk.
+kSSSk
+kSsSk
+kSSSk
+.kkk.
+end
+
+part v1.handf.mouth origin=3,1
+.kkkkk.
+kSSSSSk
+kSsSsSk
+.kkkkk.
+end
+
+# 边缘探头 (防干扰模式): two little hands gripping the edge
+# either side of her face (the app cuts her off just under her eyes, so the fingers show).
+part v1.handf.grip origin=9,5
+.kkk...........kkk.
+kSSSk.........kSSSk
+kSsSk.........kSsSk
+end
+
+# ------------------------------------------------------------------ legs (origin between the feet, hip on top)
+part v1.legs.stomp1 origin=6,8 hip=6,0
+...SS...SS...
+...SS...SS...
+...Ss...Ss...
+..NNNN..TT...
+.NN6NN..TT...
+.NNNNN.NNNN..
+..nnnnNN6NN..
+......NNNNN..
+.......nnnn..
+end
+part v1.legs.stomp2 from=v1.legs.stomp1 flip
+end
+
+# Hanging from a hand: toes point down, feet apart.
+part v1.legs.dangle1 origin=6,8 hip=6,0
+...SS...SS...
+...SS...SS...
+...Ss...Ss...
+...TT...TT...
+...TT...TT...
+..NNN...NNN..
+..N6N...N6N..
+..NNN...NNN..
+...n.....n...
+end
+
+part v1.legs.dangle2 origin=6,8 hip=6,0
+...SS...SS...
+...SS...Ss...
+...Ss...TT...
+...TT...TT...
+...TT..NNN...
+..NNN..N6N...
+..N6N..NNN...
+..NNN...n....
+...n.........
+end
+
+part v1.legs.dangle3 from=v1.legs.dangle2 flip
+end
+
+# Knees tucked (hop / fall).
+part v1.legs.tuck origin=6,8 hip=6,0
+..SS.....SS..
+..SS.....SS..
+..TT.....TT..
+.NNNN...NNNN.
+NN6NN...NN6NN
+.nnnn...nnnn.
+end
+
+# Landing squash: knees out.
+part v1.legs.wide origin=6,8 hip=6,0
+..SS.....SS..
+..Ss.....sS..
+..TT.....TT..
+.NNNN...NNNN.
+NN6NN...NN6NN
+NNNNN...NNNNN
+.nnnn...nnnn.
+end
+
+# ------------------------------------------------------------------ tail (origin at the base, behind the dress)
+part v1.tail.wag1 origin=0,11
+..........OO.
+........OOOOO
+.......OOOOOO
+......OOOOOOf
+.....OOOOOOf.
+....OOOOOOf..
+...OOOOOff...
+..OOOOOf.....
+.OOOOff......
+OOOOf........
+OOf..........
+Of...........
+end
+
+part v1.tail.wag2 origin=0,8
+............OO.
+..........OOOOO
+........OOOOOOO
+......OOOOOOOf.
+....OOOOOOOff..
+..OOOOOOOff....
+.OOOOOff.......
+OOOOf..........
+Of.............
+end
+
+part v1.tail.down origin=0,0
+Of......
+OOOf....
+.OOOOf..
+.OOOOOf.
+..OOOOOf
+..OOOOOf
+...OOOOf
+...OOOf.
+....Off.
+end
+
+# ------------------------------------------------------------------ back hair variants
+# Falling: the long hair flares up and out.
+part v1.hairback.fly sym=15 origin=15,0 mirror=v1.hairback.fly
+..........HHHHHH
+........HHHHHHHH
+......HHHHHHHHHH
+.....HHHHHHHHHHH
+....HHHHHHHHHHHH
+...HHHHHHHHHHHHH
+..HHHHHHHHHHHHHH
+.HHHHHHHHHHHHHHH
+HHhHHHHHHHHHHHHH
+HhhHHHHHHHHHHHHH
+HhgHHHHHHHHHHHHH
+HhgHHHHHHHHHHHHH
+HhhHHHHHHHHHHHHH
+HhhHHHHHHHHHHHHH
+HhhHHHHHHHHHHHHH
+HhhHHHHHHHHHHHHH
+HhhHHHHHHHHHHHHH
+HhHHHHHHHHHHHHHH
+HhHHH...........
+HhH.............
+HH..............
+H...............
+end
