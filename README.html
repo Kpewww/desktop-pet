@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="可以自己定制的 Windows 像素桌宠。了解功能、使用 Claude Code 或 Codex 制作自己的角色，以及编译和运行方法。">
+<meta name="color-scheme" content="light">
+<title>Desktop Pet · 可以自己定制的像素桌宠</title>
+<style>
+:root{--ink:#29352c;--muted:#647166;--green:#42644b;--paper:#faf9f4;--line:#dce2d6}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:28px}body{margin:0;color:var(--ink);background:var(--paper);font:16px/1.85 -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}a{color:var(--green);text-underline-offset:4px}a:hover{color:#213c28}a:focus-visible{outline:3px solid #ba8137;outline-offset:5px}
+.topbar{max-width:1120px;margin:auto;padding:24px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);gap:20px}.brand{font-weight:800;letter-spacing:1px;text-decoration:none}.brand::before{content:"";display:inline-block;width:13px;height:13px;margin-right:12px;background:#72946b;box-shadow:4px -4px 0 #bfd0b3}.topbar nav{display:flex;gap:22px;font-size:14px}.topbar nav a{text-decoration:none}
+.layout{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:190px minmax(0,1fr);gap:54px;padding:45px 32px 70px}
+aside{align-self:start;position:sticky;top:30px;padding-top:23px}aside p{font-size:11px;letter-spacing:2px;color:var(--muted);font-weight:700}aside a{display:block;text-decoration:none;font-size:14px;padding:7px 0;color:var(--muted)}aside a:hover{color:var(--green)}main{min-width:0}
+.hero{padding:10px 0 22px}.eyebrow{font-size:11px;letter-spacing:2.5px;color:var(--green);font-weight:700}h1{font-size:clamp(36px,5vw,58px);line-height:1.22;letter-spacing:-2px;margin:20px 0}h1 span{color:var(--green)}.hero-caption{color:var(--muted);font-size:17px}main>p{margin:18px 0}strong{font-weight:650}
+.pet-preview{text-align:center;padding:30px 18px;background:#eef1e6;border:1px solid var(--line);border-radius:18px;overflow:hidden}.pet-preview img{max-width:100%;height:auto;image-rendering:pixelated;vertical-align:middle}
+.callout{padding:20px 24px;background:#e7eddf;border-left:4px solid #6f8d63;border-radius:0 10px 10px 0}.callout a{display:inline-block}
+section{border-top:1px solid var(--line);margin-top:42px;padding-top:24px}h2{font-size:25px;letter-spacing:-.5px;margin:0 0 20px;display:flex;align-items:center;gap:14px}.number{font:12px/1.4 ui-monospace,monospace;color:#7b8b72;letter-spacing:0}
+ul{padding-left:22px;margin:10px 0}li{padding-left:4px;margin:10px 0}li::marker{color:#819477}li ul{font-size:15px;color:var(--muted)}li li{margin:4px 0}
+code{font:13px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;background:#eceee7;padding:3px 6px;border-radius:4px;overflow-wrap:anywhere}.codebox{border-radius:12px;overflow:hidden;background:#26372e;color:#edf3e7;margin:22px 0}.code-label{padding:10px 20px;border-bottom:1px solid #425246;font:11px/1.5 ui-monospace,monospace;letter-spacing:1px;color:#b7c9b0}pre{margin:0;padding:20px;overflow-x:auto;line-height:1.9}pre code{background:none;color:inherit;padding:0;white-space:pre;overflow-wrap:normal}
+.table-scroll{max-width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:10px}table{width:100%;border-collapse:collapse;font-size:14px}th{text-align:left;background:#eef1e8;color:#53674c;font-weight:600}td,th{padding:13px 17px;border-bottom:1px solid var(--line)}tr:last-child td{border-bottom:0}td:first-child{white-space:nowrap}
+footer{border-top:1px solid var(--line);max-width:1056px;margin:auto;padding:25px 0 40px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:16px}
+@media(max-width:760px){.layout{display:block;padding:24px 22px 45px}aside{display:none}.topbar{padding:20px 22px}.topbar nav{gap:14px;font-size:12px}h1{letter-spacing:-1px}.hero{padding-top:0}.callout{padding:16px}h2{font-size:22px}footer{margin:0 22px;display:block}td,th{padding:10px 12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{aside,.topbar nav{display:none}.layout{display:block;padding:0}.topbar{padding:12px 0}body{background:white;font-size:11pt}h1{font-size:28pt}section{break-inside:avoid}.codebox{background:#eee;color:#111}footer{padding:12px 0}}
+</style>
+</head>
+<body>
+<div class="topbar"><a class="brand" href="#">DESKTOP PET</a><nav aria-label="快捷导航"><a href="#section-4">开始定制</a><a href="https://github.com/Kpewww/desktop-pet">GitHub ↗</a></nav></div>
+<div class="layout"><aside aria-label="页面目录"><p>README / 使用指南</p><a href="#section-1">它会做什么</a><a href="#section-2">轻、不打扰</a><a href="#section-3">编译和运行</a><a href="#section-4">做自己的宠物</a><a href="#section-5">目录</a><a href="#section-6">授权</a></aside><main><header class="hero"><p class="eyebrow">DESKTOP PET · OPEN SOURCE</p><h1>可以自己定制的<br><span>像素桌宠。</span></h1><p class="hero-caption">一只小小的伙伴，一点属于你的日常。</p></header>
+<p>一只住在 Windows 任务栏上方的像素小人。这个仓库是一个<strong>预制包</strong>：引擎、动作、功能都做好了，附带一只示例宠物「小柴」。你可以照着教程，用 <a href="https://claude.com/claude-code">Claude Code</a> 或 <a href="https://developers.openai.com/codex/ide">Codex</a> 把它改成<strong>你自己的宠物</strong>：照你（或者你的朋友、你家猫）的样子画，有自己的名字、口头禅、爱吃的东西和衣服。</p>
+<p class="pet-preview"><img src="docs/images/example.png" alt="示例宠物 小柴" loading="lazy"></p>
+<p class="callout">👉 <strong>想做自己的宠物：选择 <a href="https://github.com/Kpewww/desktop-pet/blob/master/docs/TUTORIAL_CLAUDE_CODE.md">Claude Code 详细教程</a> 或 <a href="https://github.com/Kpewww/desktop-pet/blob/master/docs/TUTORIAL_CODEX.md">Codex 全流程与可复制 Prompt</a>。</strong></p>
+<section id="section-1"><h2><span class="number">01</span>它会做什么</h2>
+<ul><li>
+<strong>日常</strong>：
+<ul><li>
+在屏幕两边散步、发呆、坐下、打瞌睡。
+</li><li>
+被戳会生气，摸头会开心，拎起来会挣扎，扔出去会摔晕。
+</li></ul>
+</li><li>
+<strong>喂东西吃</strong>：吃多了要上厕所，偶尔还会放屁。
+</li><li>
+<strong>举牌看剪贴板</strong>：你复制东西时，举块小牌子给你看。
+<ul><li>
+剪贴板记录在「小窝」里。
+</li><li>
+像密码的内容会打码。
+</li></ul>
+</li><li>
+<strong>番茄钟</strong>：抱着小电脑陪你专注。
+</li><li>
+<strong>提醒</strong>：喝水、久坐、熬夜提醒，还有待办便签。
+</li><li>
+<strong>换装和发型</strong>：衣柜里换衣服（在屏风后面换），喝生发药水变长发、剪头发变短发。
+</li><li>
+<strong>防干扰模式</strong>：学习时躲到任务栏后面只露半个脑袋，或者安静陪伴、完全隐身。
+<ul><li>
+「专注监督」：在分心网站上待久了会被抓包。
+</li></ul>
+</li><li>
+<strong>陪看</strong>：你看视频、看直播时，它坐到一边陪你看，偶尔笑一下，从不催你。
+</li><li>
+<strong>自定义台词</strong>：在「小窝 → 台词」里自己教它说话。
+</li><li>
+<strong>两只一起</strong>：两只宠物可以同时开，会互相打招呼、串门、一起躲。
+</li></ul>
+</section>
+<section id="section-2"><h2><span class="number">02</span>轻、不打扰</h2>
+<ul><li>
+<strong>不用安装</strong>：一个 exe，不用装任何运行库（Windows 10/11 自带 .NET Framework 4.8）。exe 大约 0.7MB。
+</li><li>
+<strong>占用低</strong>：平时 CPU 约 0.3% 单核，睡觉 0.1%。全屏游戏时自动躲起来，完全不占资源。
+</li><li>
+<strong>不抢焦点</strong>：点它不会抢走你窗口的焦点，透明的地方可以点穿。
+</li><li>
+<strong>隐私</strong>：
+<ul><li>
+剪贴板记录默认只在内存里。
+</li><li>
+窗口标题只在本机比对，不保存、不上传。
+</li></ul>
+</li></ul>
+</section>
+<section id="section-3"><h2><span class="number">03</span>编译和运行</h2>
+<p>除了 Windows 自带的 C# 编译器，什么都不用装。在仓库文件夹里打开 PowerShell：</p>
+<div class="codebox"><div class="code-label">PowerShell</div><pre><code>Set-ExecutionPolicy -Scope CurrentUser RemoteSigned   # 第一次需要：允许运行本地脚本
+.\build.ps1 art      # 从 art\&lt;宠物&gt;\ 的文本源文件生成图集
+.\build.ps1          # 编译，得到 out\&lt;编号&gt;.exe
+.\build.ps1 run      # 编译并运行
+.\build.ps1 test     # 跑单元测试
+.\build.ps1 dist     # 打包成 zip，发给朋友
+.\build.ps1 new 名字  # 复制示例宠物，开始做你自己的</code></pre></div>
+<p>所有命令都可以加 <code>-Char &lt;宠物&gt;</code>，只处理其中一只。</p>
+</section>
+<section id="section-4"><h2><span class="number">04</span>做自己的宠物</h2>
+<ul><li>
+<strong>两种做法</strong>：
+<ul><li>
+用 AI 编程工具帮你做：<a href="https://github.com/Kpewww/desktop-pet/blob/master/docs/TUTORIAL_CLAUDE_CODE.md">Claude Code 教程</a> / <a href="https://github.com/Kpewww/desktop-pet/blob/master/docs/TUTORIAL_CODEX.md">Codex 全流程教程</a>。
+</li><li>
+想手动改，看 <a href="https://github.com/Kpewww/desktop-pet/blob/master/docs/MAKE_YOUR_PET.md">宠物由哪些文件组成</a> 和 <a href="https://github.com/Kpewww/desktop-pet/blob/master/art/README.md">怎么改像素图</a>。
+</li></ul>
+</li><li>
+<strong>照片放哪</strong>：做宠物用的照片放进 <code>reference_pics/</code>，这个文件夹在 <code>.gitignore</code> 里，不会被提交。
+</li></ul>
+</section>
+<section id="section-5"><h2><span class="number">05</span>目录</h2>
+<div class="table-scroll"><table><thead><tr><th>路径</th><th>内容</th></tr></thead><tbody>
+<tr><td><code>src/Core/</code></td><td>行为引擎、物理、图集格式、角色档（纯逻辑，可测试）</td></tr>
+<tr><td><code>src/App/</code></td><td>窗口、渲染、托盘、剪贴板、小窝</td></tr>
+<tr><td><code>src/Tests/</code></td><td>单元测试（也检查每只宠物的角色档和台词是否齐全）</td></tr>
+<tr><td><code>art/&lt;宠物&gt;/</code></td><td>像素图的文本源文件：调色板、部件、动作表、衣服、造型</td></tr>
+<tr><td><code>art/tool/</code></td><td>把文本源文件变成图集的构建工具</td></tr>
+<tr><td><code>assets/&lt;宠物&gt;/</code></td><td>角色档、台词、生成的图集，编译时嵌进 exe</td></tr>
+<tr><td><code>docs/</code></td><td>教程、动画规范、技术调研</td></tr>
+</tbody></table></div>
+</section>
+<section id="section-6"><h2><span class="number">06</span>授权</h2>
+<ul><li>
+<strong>代码</strong>：MIT（见 <code>LICENSE</code>）。
+</li><li>
+<strong>像素字体</strong>：<a href="https://github.com/TakWolf/fusion-pixel-font">Fusion Pixel Font</a>，SIL Open Font License 1.1（见 <code>art/fonts/</code>）。
+</li></ul>
+</section></main></div>
+<footer><span>DESKTOP PET · 一只属于你的像素伙伴</span><span>内容来自 <a href="https://github.com/Kpewww/desktop-pet/blob/master/README.md">README.md</a> · HTML 静态版本</span></footer>
+</body></html>
