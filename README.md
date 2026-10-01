@@ -1,10 +1,10 @@
 # Desktop Pet · 可以自己定制的像素桌宠
 
-一只住在 Windows 任务栏上方的像素小人。这个仓库是一个**预制包**：引擎、动作、功能都做好了，附带一只示例宠物「小柴」。你可以照着教程，用 [Claude Code](https://claude.com/claude-code) 把它改成**你自己的宠物**：照你（或者你的朋友、你家猫）的样子画，有自己的名字、口头禅、爱吃的东西和衣服。
+一只住在 Windows 任务栏上方的像素小人。这个仓库是一个**预制包**：引擎、动作、功能都做好了，附带一只示例宠物「小柴」。你可以照着教程，用 [Claude Code](https://claude.com/claude-code) 或 [Codex](https://developers.openai.com/codex/ide) 把它改成**你自己的宠物**：照你（或者你的朋友、你家猫）的样子画，有自己的名字、口头禅、爱吃的东西和衣服。
 
 ![示例宠物 小柴](docs/images/example.png)
 
-👉 **想做自己的宠物：看 [用 Claude Code 做一只自己的桌宠（详细教程）](docs/TUTORIAL_CLAUDE_CODE.md)**
+👉 **想做自己的宠物：选择 [Claude Code 详细教程](docs/TUTORIAL_CLAUDE_CODE.md) 或 [Codex 全流程与可复制 Prompt](docs/TUTORIAL_CODEX.md)。**
 
 ## 它会做什么
 - **日常**：
@@ -48,7 +48,7 @@ Set-ExecutionPolicy -Scope CurrentUser RemoteSigned   # 第一次需要：允许
 
 ## 做自己的宠物
 - **两种做法**：
-  - 推荐用 Claude Code 帮你做，看 [教程](docs/TUTORIAL_CLAUDE_CODE.md)。
+  - 用 AI 编程工具帮你做：[Claude Code 教程](docs/TUTORIAL_CLAUDE_CODE.md) / [Codex 全流程教程](docs/TUTORIAL_CODEX.md)。
   - 想手动改，看 [宠物由哪些文件组成](docs/MAKE_YOUR_PET.md) 和 [怎么改像素图](art/README.md)。
 - **照片放哪**：做宠物用的照片放进 `reference_pics/`，这个文件夹在 `.gitignore` 里，不会被提交。
 
